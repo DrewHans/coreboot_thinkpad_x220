@@ -1,21 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO: improve the readability of this script
-
-sudo_user_username=${SUDO_USER:-$USER} # user who ran this script with sudo
 work_dir=$(pwd)
-
-# location of the stock bios you read from the eeprom
-stock_bios_rom="$work_dir/stock_bios.rom"
-
-# location that the cleaned bios will be saved to
-cleaned_bios_rom="$work_dir/cleaned_stock_bios.rom"
-
-# location that the coreboot rom will be saved to
-coreboot_rom="$work_dir/coreboot.rom"
-
-# location to copy the proprietary blobs
-blobs_dir="$work_dir/coreboot/3rdparty/blobs/mainboard/lenovo/x220"
 
 # exit if not running as root
 if [[ $(/usr/bin/id -u) -ne 0 ]]; then
@@ -23,77 +8,30 @@ if [[ $(/usr/bin/id -u) -ne 0 ]]; then
     exit 1
 fi
 
-# check prerequisite programs installed
-command -v git >/dev/null 2>&1 || {
-    echo "git not found; aborting"
-    exit 1
-}
 
-sudo apt update
+# TODO: consider refactoring these scripts into one...
+# - I had trouble keeping all these steps organized in one single file
+#   so I decided to split them apart into several little scripts
 
-echo "Installing flashrom"
-sudo apt install flashrom --yes
+sudo bash $work_dir/0_install_prerequisites.sh
 
-echo "Installing build-essential & other build tools"
-sudo apt install \
-    build-essential \
-    libftdi1 \
-    libftdi-dev \
-    libusb-dev \
-    libpci-dev \
-    m4 \
-    bison \
-    flex \
-    libncurses5-dev \
-    libncurses5 \
-    pciutils \
-    usbutils \
-    zlib1g-dev \
-    gnat \
-    --yes
+bash $work_dir/1_clone_git_repos.sh
 
-echo "Downloading pre-extracted vgabios firmware"  # needed for booting windows
-wget https://github.com/thetarkus/x220-coreboot-guide/raw/master/vga-8086-0126.bin
+sudo bash $work_dir/2_build_ifdtool.sh
 
-# me_cleaner work
-echo "Downloading the me_cleaner git repo"
-git clone https://github.com/corna/me_cleaner $work_dir/me_cleaner
+bash $work_dir/3_create_cleaned_rom.sh
 
-echo "Creating cleaned bios rom"
-$work_dir/me_cleaner/me_cleaner.py --soft-disable $stock_bios_rom --output "$cleaned_bios_rom"
+bash $work_dir/4_extract_blobs_from_cleaned_rom.sh
 
-# coreboot work
-echo "Downloading the coreboot git repo"
-git clone --recurse-submodules https://review.coreboot.org/coreboot.git $work_dir/coreboot
+bash $work_dir/5_download_vgabios.sh
 
-echo "Copying coreboot configuration"
-cp $work_dir/coreboot.config $work_dir/coreboot/.config
+bash $work_dir/6_move_3rdparty_blobs.sh
 
-echo "Compiling/installing coreboot's ifdtool"
-cd $work_dir/coreboot/util/ifdtool
-make && sudo make install
-cd $work_dir  # return to start directory
-echo "Extracting blobs from cleaned bios rom"
-ifdtool -x "$cleaned_bios_rom"
-mkdir -p $blobs_dir
-cp $work_dir/flashregion_0_flashdescriptor.bin $blobs_dir/descriptor.bin
-cp $work_dir/flashregion_2_intel_me.bin $blobs_dir/me.bin
-cp $work_dir/flashregion_3_gbe.bin $blobs_dir/gbe.bin
+bash $work_dir/7_configure_coreboot.sh
 
-# TODO: sed inplace update the vgabios.bin path in config using variable in this file
-# set path to $work_dir/vga-8086-0126.bin
+bash $work_dir/8_build_coreboot.sh
 
-cd $work_dir/coreboot
-
-make crossgcc-i386 CPUS=6
-make iasl
-make
-
-cp $work_dir/coreboot/build/coreboot.rom $work_dir/coreboot.rom
-
-cd $work_dir
-
-echo "Coreboot rom build complete"
+bash $work_dir/9_flash_coreboot_rom.sh
 
 # Online references:
 # https://michaelmob.com/post/coreboot-thinkpad-x220/
