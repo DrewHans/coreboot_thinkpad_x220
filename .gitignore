@@ -1,3 +1,6 @@
+# ignore flashable roms
+*.rom
+
 # ignore rom blobs
 *.bin
 
