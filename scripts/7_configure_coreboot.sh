@@ -9,8 +9,13 @@ if [ -f "$work_dir/coreboot.config" ]; then
     cp $work_dir/coreboot.config $work_dir/coreboot/.config
 else
     echo "$work_dir/coreboot.config not found"
+    echo "Running make nconfig"
     cd $work_dir/coreboot/
     make nconfig
+    echo ""
+
+    echo "Backing up $work_dir/coreboot/.config to $work_dir/coreboot.config"
+    cp $work_dir/coreboot/.config $work_dir/coreboot.config
 fi
 
 if [ ! -f "$work_dir/coreboot/.config" ]; then
