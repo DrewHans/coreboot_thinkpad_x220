@@ -12,7 +12,7 @@ cd $work_dir/coreboot/
 
 echo "Detecting system architecture to optimize crossgcc compilation"
 num_of_cpus_on_system=$(grep -c ^processor /proc/cpuinfo)
-num_of_cpus_to_use=$(( $num_of_system_cpus / 2 ))
+num_of_cpus_to_use=$(( $num_of_cpus_on_system / 2 ))
 system_arch=$(uname -m)
 arch="x64"
 
@@ -28,9 +28,9 @@ if [ system_arch -eq "arm" ]; then
     arch="arm"
 fi
 
-echo "Detected $system_arch system architecture"
-echo "Detected $num_of_cpus_on_system CPU cores on system"
-echo "$arch arch & $num_of_cpus_to_use CPU cores will be used"
+echo "Detected $system_arch system architecture: $arch arch will be used"
+echo "Detected $num_of_cpus_on_system CPU cores: $num_of_cpus_to_use CPU cores will be used"
+echo ""
 
 echo "Running make crossgcc-$arch CPUS=$num_of_cpus_to_use"
 make crossgcc-$arch CPUS=$num_of_cpus_to_use || {
