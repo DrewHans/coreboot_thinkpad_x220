@@ -16,23 +16,25 @@ num_of_cpus_to_use=$(( $num_of_cpus_on_system / 2 ))
 system_arch=$(uname -m)
 arch="x64"
 
-if [ system_arch -eq "x86_64" ]; then
+if [ $system_arch == "x86_64" ]; then
     arch="x64"
 fi
 
-if [ system_arch -eq "ix86" ]; then
+if [ $system_arch == "ix86" ]; then
     arch="i386"
 fi
 
-if [ system_arch -eq "arm" ]; then
+if [ $system_arch == "arm" ]; then
     arch="arm"
 fi
 
-echo "Detected $system_arch system architecture: $arch arch will be used"
-echo "Detected $num_of_cpus_on_system CPU cores: $num_of_cpus_to_use CPU cores will be used"
+echo "Detected $system_arch system architecture: $arch arch option will be used"
+echo "Detected $num_of_cpus_on_system CPU cores available: $num_of_cpus_to_use CPU cores will be used"
 echo ""
 
 echo "Running make crossgcc-$arch CPUS=$num_of_cpus_to_use"
+
+# TODO: figure out if this build works or if we can only use i386 for the x220
 make crossgcc-$arch CPUS=$num_of_cpus_to_use || {
     echo "Error detected; aborting $0"
     exit 1

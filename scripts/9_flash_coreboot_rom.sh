@@ -3,14 +3,8 @@
 
 work_dir=$(pwd)
 
-# exit if not running as root
-if [[ $(/usr/bin/id -u) -ne 0 ]]; then
-    echo "Error: You must run this script as root"
-    exit 1
-fi
-
 if [ ! -f "$work_dir/coreboot.rom" ]; then
-    echo "$work_dir/coreboot.rom not found; something went horribly wrong"
+    echo "coreboot.rom not found; something went horribly wrong"
     echo "Aborting $0"
     exit 1
 fi
