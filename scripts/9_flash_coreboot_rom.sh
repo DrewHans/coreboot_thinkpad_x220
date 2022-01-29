@@ -26,5 +26,6 @@ echo "If not, then you need to fix your clip"
 echo ""
 
 echo "When you are ready, flash the coreboot rom by running:"
-echo "sudo flashrom -p $programmer  -c '$eeprom_chip' -w $work_dir/coreboot.rom"
+echo "sudo flashrom -p $programmer -c '$eeprom_chip' -w $work_dir/coreboot.rom"
 echo ""
+# note to self, don't forget that passing -r instead of -w will read the chip
