@@ -80,7 +80,7 @@ Payload
 #### Note:
 - Verify the Bootsplash image path and filename are correct
 - Verify the VGA BIOS path and filename are correct
-- If you are replaced the stock ROM chip, make sure the ROM chip size is correct
+- If you replaced the stock ROM chip, make sure the ROM chip size is correct
     - example: I desoldered the stock ROM chip (8192 KB (8 MB)) and replaced it with a winbond W25Q128.V (16384 KB (16 MB))
 
 ---
