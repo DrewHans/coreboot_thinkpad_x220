@@ -9,7 +9,7 @@ coreboot_version_tag="4.15"  # set the latest numbered version here
 
 # check prerequisite programs installed
 command -v git >/dev/null 2>&1 || {
-    echo "git not found; aborting"
+    echo "git not found; aborting $0"
     exit 1
 }
 

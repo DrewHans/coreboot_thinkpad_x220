@@ -11,7 +11,7 @@ fi
 
 if [ ! -f "$work_dir/coreboot.rom" ]; then
     echo "$work_dir/coreboot.rom not found; something went horribly wrong"
-    echo "Aborting"
+    echo "Aborting $0"
     exit 1
 fi
 

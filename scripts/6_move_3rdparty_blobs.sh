@@ -5,22 +5,22 @@ work_dir=$(pwd)
 blobs_dir="$work_dir/coreboot/3rdparty/blobs/mainboard/lenovo/x220/"
 
 if [ ! -f "$work_dir/flashregion_0_flashdescriptor.bin" ]; then
-    echo "$work_dir/flashregion_0_flashdescriptor.bin file not found; aborting"
+    echo "$work_dir/flashregion_0_flashdescriptor.bin file not found; aborting $0"
     exit 1
 fi
 
 if [ ! -f "$work_dir/flashregion_2_intel_me.bin" ]; then
-    echo "$work_dir/flashregion_2_intel_me.bin file not found; aborting"
+    echo "$work_dir/flashregion_2_intel_me.bin file not found; aborting $0"
     exit 1
 fi
 
 if [ ! -f "$work_dir/flashregion_3_gbe.bin" ]; then
-    echo "$work_dir/flashregion_3_gbe.bin file not found; aborting"
+    echo "$work_dir/flashregion_3_gbe.bin file not found; aborting $0"
     exit 1
 fi
 
 if [ ! -f "$work_dir/vga-8086-0126.bin.bin" ]; then
-    echo "$work_dir/vga-8086-0126.bin.bin file not found; aborting"
+    echo "$work_dir/vga-8086-0126.bin.bin file not found; aborting $0"
     exit 1
 fi
 

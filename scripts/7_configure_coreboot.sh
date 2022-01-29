@@ -14,7 +14,7 @@ else
 fi
 
 if [ ! -f "$work_dir/coreboot/.config" ]; then
-    echo "$work_dir/coreboot/.config not found; aborting"
+    echo "$work_dir/coreboot/.config not found; aborting $0"
     exit 1
 fi
 

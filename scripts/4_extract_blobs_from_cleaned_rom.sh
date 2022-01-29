@@ -5,7 +5,7 @@ work_dir=$(pwd)
 cleaned_bios_rom="cleaned_bios.rom"
 
 if [ ! -f "$work_dir/$cleaned_bios_rom" ]; then
-    echo "$work_dir/$cleaned_bios_rom file not found; aborting"
+    echo "$work_dir/$cleaned_bios_rom file not found; aborting $0"
     exit 1
 fi
 

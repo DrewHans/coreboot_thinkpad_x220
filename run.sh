@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 work_dir=$(pwd)
+stock_bios_rom="stock_bios.rom"
 
 # exit if not running as root
 if [[ $(/usr/bin/id -u) -ne 0 ]]; then
@@ -8,6 +9,12 @@ if [[ $(/usr/bin/id -u) -ne 0 ]]; then
     exit 1
 fi
 
+if [ ! -f "$work_dir/$stock_bios_rom" ]; then
+    echo "$work_dir/$stock_bios_rom file not found"
+    echo "You need to BYOB (bring your own bios)"
+    echo "Aborting $0"
+    exit 1
+fi
 
 # TODO: consider refactoring these scripts into one...
 # - I had trouble keeping all these steps organized in one single file
