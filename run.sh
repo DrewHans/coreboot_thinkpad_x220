@@ -13,25 +13,25 @@ fi
 # - I had trouble keeping all these steps organized in one single file
 #   so I decided to split them apart into several little scripts
 
-sudo bash $work_dir/0_install_prerequisites.sh
+sudo bash $work_dir/scripts/0_install_prerequisites.sh
 
-bash $work_dir/1_clone_git_repos.sh
+bash $work_dir/scripts/1_clone_git_repos.sh
 
-sudo bash $work_dir/2_build_ifdtool.sh
+sudo bash $work_dir/scripts/2_build_ifdtool.sh
 
-bash $work_dir/3_create_cleaned_rom.sh
+bash $work_dir/scripts/3_create_cleaned_rom.sh
 
-bash $work_dir/4_extract_blobs_from_cleaned_rom.sh
+bash $work_dir/scripts/4_extract_blobs_from_cleaned_rom.sh
 
-bash $work_dir/5_download_vgabios.sh
+bash $work_dir/scripts/5_download_vgabios.sh
 
-bash $work_dir/6_move_3rdparty_blobs.sh
+bash $work_dir/scripts/6_move_3rdparty_blobs.sh
 
-bash $work_dir/7_configure_coreboot.sh
+bash $work_dir/scripts/7_configure_coreboot.sh
 
-bash $work_dir/8_build_coreboot.sh
+bash $work_dir/scripts/8_build_coreboot.sh
 
-bash $work_dir/9_flash_coreboot_rom.sh
+bash $work_dir/scripts/9_flash_coreboot_rom.sh
 
 # Online references:
 # https://michaelmob.com/post/coreboot-thinkpad-x220/
