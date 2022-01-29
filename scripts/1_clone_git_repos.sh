@@ -32,4 +32,5 @@ cd $work_dir/coreboot
 git fetch --all --tags
 git checkout tags/$coreboot_version_tag -b v$coreboot_version_tag-branch
 
-cd $work_dir
+cd $work_dir  # return to start directory
+echo ""

@@ -55,4 +55,5 @@ echo "Build complete!"
 echo "Copying coreboot.rom file to $work_dir"
 cp $work_dir/coreboot/build/coreboot.rom $work_dir/coreboot.rom
 
-cd $work_dir
+cd $work_dir  # return to start directory
+echo ""

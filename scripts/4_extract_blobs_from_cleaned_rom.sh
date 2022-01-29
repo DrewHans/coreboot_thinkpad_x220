@@ -11,3 +11,5 @@ fi
 
 echo "Extracting blobs from cleaned bios rom"
 ifdtool -x "$work_dir/$cleaned_bios_rom"
+
+echo ""

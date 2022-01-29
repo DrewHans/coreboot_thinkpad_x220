@@ -18,4 +18,5 @@ if [ ! -f "$work_dir/coreboot/.config" ]; then
     exit 1
 fi
 
-cd $work_dir
+cd $work_dir  # return to start directory
+echo ""

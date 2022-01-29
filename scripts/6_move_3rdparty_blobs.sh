@@ -19,8 +19,8 @@ if [ ! -f "$work_dir/flashregion_3_gbe.bin" ]; then
     exit 1
 fi
 
-if [ ! -f "$work_dir/vga-8086-0126.bin.bin" ]; then
-    echo "$work_dir/vga-8086-0126.bin.bin file not found; aborting $0"
+if [ ! -f "$work_dir/vga-8086-0126.bin" ]; then
+    echo "$work_dir/vga-8086-0126.bin file not found; aborting $0"
     exit 1
 fi
 
@@ -34,3 +34,5 @@ cp $work_dir/flashregion_3_gbe.bin $blobs_dir/gbe.bin
 
 echo "Copying vgabios to $blobs_dir"
 cp $work_dir/vga-8086-0126.bin $blobs_dir/vgabios.bin
+
+echo ""

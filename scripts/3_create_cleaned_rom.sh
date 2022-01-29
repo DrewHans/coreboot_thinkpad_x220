@@ -13,3 +13,5 @@ if [ ! -f "$work_dir/$stock_bios_rom" ]; then
 fi
 
 $work_dir/me_cleaner/me_cleaner.py --soft-disable $work_dir/$stock_bios_rom --output $work_dir/$cleaned_bios_rom
+
+echo ""
