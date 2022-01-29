@@ -6,3 +6,11 @@
 
 # ignore bootsplash images
 *.jpg
+
+# ignore cloned coreboot repo & files
+/coreboot
+coreboot/**
+
+# ignore clone me_cleaner repo & files
+/me_cleaner/
+me_cleaner/**
