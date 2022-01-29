@@ -10,15 +10,6 @@ fi
 
 cd $work_dir/coreboot/
 
-# Note: must make iasl first or make crossgcc will output error:
-# $ ... coreboot/util/genbuild_h/genbuild_h.sh: 59: -v: not found
-echo "Running make iasl"
-make iasl || {
-    echo "Error detected; aborting $0"
-    exit 1
-}
-echo ""
-
 echo "Detecting system architecture to optimize crossgcc compilation"
 num_of_cpus_on_system=$(grep -c ^processor /proc/cpuinfo)
 num_of_cpus_to_use=$(( $num_of_cpus_on_system / 2 ))
@@ -40,6 +31,13 @@ echo ""
 # TODO: figure out if this build works or if we can only use i386 for the x220
 echo "Running make crossgcc-$arch CPUS=$num_of_cpus_to_use"
 make crossgcc-$arch CPUS=$num_of_cpus_to_use || {
+    echo "Error detected; aborting $0"
+    exit 1
+}
+echo ""
+
+echo "Running make iasl"
+make iasl || {
     echo "Error detected; aborting $0"
     exit 1
 }

@@ -71,7 +71,7 @@ Devices
       (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/lenovo/x220/vgabios.bin) VGA BIOS path and filename
       (8086,0126) VGA device PCI IDs
   [*] Add a Video Bios Table (VBT) binary to CBFS
-      (src/mainboard/$(MAINBOARDDIR)/data.vbt) VBT binary path and filename
+      (src/mainboard/$(MAINBOARDDIR)/variants/x220/data.vbt) VBT binary path and filename
 
 Generic Drivers
   [*] PS/2 keyboard init
