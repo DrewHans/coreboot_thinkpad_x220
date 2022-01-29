@@ -46,12 +46,12 @@ Chipset
 
       *** Intel Firmware ***
   [*] Add Intel descriptor.bin file
-      (3rdparty/blobs/mainboard/$(MAINBOARDDIR)/descriptor.bin) Path and filename
+      (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/descriptor.bin) Path and filename
   [*] Add Intel ME/TXE firmware
-      (3rdparty/blobs/mainboard/$(MAINBOARDDIR)/me.bin) Path to management engine firmware
+      (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/me.bin) Path to management engine firmware
   [*] Allows HOST/CPU read access to ME region
   [*] Add gigabit ethernet firmware
-      (3rdparty/blobs/mainboard/$(MAINBOARDDIR)/gbe.bin) Path to gigabit ethernet
+      (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/gbe.bin) Path to gigabit ethernet
 
 Devices
       Graphics initialization (Run VGA Option ROMs) --->
@@ -68,7 +68,7 @@ Devices
   [*] Enable PCIe Clock Power Management
   [*] Enable PCIe ASPM L1 SubState
   [*] Add a VGA BIOS image
-      (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/lenovo/x220/vgabios.bin) VGA BIOS path and filename
+      (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/vgabios.bin) VGA BIOS path and filename
       (8086,0126) VGA device PCI IDs
   [*] Add a Video Bios Table (VBT) binary to CBFS
       (src/mainboard/$(MAINBOARDDIR)/variants/x220/data.vbt) VBT binary path and filename
