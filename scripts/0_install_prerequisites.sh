@@ -12,6 +12,7 @@ echo ""
 echo "Installing build-essential & other required tools"
 sudo apt install \
     build-essential \
+    acpica-tools \
     libftdi1 \
     libftdi-dev \
     libusb-dev \
