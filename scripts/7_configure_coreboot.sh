@@ -4,7 +4,7 @@
 work_dir=$(pwd)
 
 if [ -f "$work_dir/coreboot.config" ]; then
-    echo "$work_dir/coreboot.config found"
+    echo "Found coreboot.config at $work_dir/coreboot.config"
     echo "Copying coreboot.config file to $work_dir/coreboot/.config"
     cp $work_dir/coreboot.config $work_dir/coreboot/.config
 else

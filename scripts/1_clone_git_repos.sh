@@ -29,6 +29,8 @@ else
     echo "Detected coreboot directory; skipping git clone"
 fi
 
+echo ""
+
 echo "Checking out coreboot release $coreboot_version_tag"
 cd $work_dir/coreboot
 git fetch --all --tags

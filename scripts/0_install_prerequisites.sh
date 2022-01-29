@@ -3,9 +3,11 @@
 
 echo "Updating apt repositories"
 sudo apt update
+echo ""
 
 echo "Installing flashrom"
 sudo apt install flashrom --yes
+echo ""
 
 echo "Installing build-essential & other required tools"
 sudo apt install \

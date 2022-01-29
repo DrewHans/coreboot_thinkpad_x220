@@ -24,7 +24,7 @@ if [ ! -f "$work_dir/vga-8086-0126.bin" ]; then
     exit 1
 fi
 
-echo "Creating $blobs_dir directories to store blob files"
+echo "Creating $blobs_dir directory to store blob files"
 mkdir -p $blobs_dir
 
 echo "Copying blobs extracted from cleaned_bios.rom to $blobs_dir"
