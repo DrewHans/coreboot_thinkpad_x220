@@ -20,6 +20,8 @@ else
     echo "Detected me_cleaner directory; skipping git clone"
 fi
 
+echo ""
+
 if [ ! -d "$work_dir/coreboot" ]; then
     echo "Downloading the coreboot git repo"
     git clone $coreboot_repo $work_dir/coreboot
