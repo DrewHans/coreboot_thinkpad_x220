@@ -41,5 +41,8 @@ echo "Build complete!"
 echo "Copying coreboot.rom file to $work_dir"
 cp $work_dir/coreboot/build/coreboot.rom $work_dir/coreboot.rom
 
+echo "Expanding coreboot.rom file to my winbond W25Q128.V chip size"
+truncate -s 16777216 $work_dir/coreboot.rom
+
 cd $work_dir  # return to start directory
 echo ""
