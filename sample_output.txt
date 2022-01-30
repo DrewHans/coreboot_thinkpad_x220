@@ -1,0 +1,1891 @@
+nyancat@poptart:~/Code/coreboot_thinkpad_x220
+$ ./run.sh
+Updating apt repositories
+[sudo] password for nyancat:
+Hit:1 http://apt.pop-os.org/proprietary focal InRelease
+Hit:2 http://us.archive.ubuntu.com/ubuntu focal InRelease
+Hit:3 http://us.archive.ubuntu.com/ubuntu focal-security InRelease
+Hit:4 http://us.archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:5 http://us.archive.ubuntu.com/ubuntu focal-backports InRelease
+Get:6 http://ppa.launchpad.net/system76/pop/ubuntu focal InRelease [18.0 kB]
+Hit:7 http://ppa.launchpad.net/yubico/stable/ubuntu focal InRelease
+Fetched 18.0 kB in 2s (9,332 B/s)
+Reading package lists... Done
+Building dependency tree      
+Reading state information... Done
+All packages are up to date.
+
+Installing flashrom
+Reading package lists... Done
+Building dependency tree      
+Reading state information... Done
+flashrom is already the newest version (1.2-5).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+Installing build-essential & other required tools
+Reading package lists... Done
+Building dependency tree      
+Reading state information... Done
+bison is already the newest version (2:3.5.1+dfsg-1).
+flex is already the newest version (2.6.4-6.2).
+libncurses5-dev is already the newest version (6.2-0ubuntu2).
+libusb-dev is already the newest version (2:0.1.12-32).
+m4 is already the newest version (1.4.18-4).
+usbutils is already the newest version (1:012-2).
+acpica-tools is already the newest version (20190509-1).
+gnat is already the newest version (9ubuntu2).
+libftdi-dev is already the newest version (0.20-4build8).
+libftdi1 is already the newest version (0.20-4build8).
+libncurses5 is already the newest version (6.2-0ubuntu2).
+build-essential is already the newest version (12.8ubuntu1.1).
+libpci-dev is already the newest version (1:3.6.4-1ubuntu0.20.04.1).
+pciutils is already the newest version (1:3.6.4-1ubuntu0.20.04.1).
+zlib1g-dev is already the newest version (1:1.2.11.dfsg-2ubuntu1.2).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+
+Detected me_cleaner directory; skipping git clone
+
+Detected coreboot directory; skipping git clone
+
+Checking out coreboot release 4.15
+Fetching origin
+fatal: a branch named 'v4.15-branch' already exists
+
+
+Building coreboot's ifdtool
+cc -O2 -g -Wall -Wextra -Wmissing-prototypes -Werror -I../../src/commonlib/include -I../../src/commonlib/bsd/include -I../cbfstool/flashmap -include ../../src/commonlib/bsd/include/commonlib/bsd/compiler.h -c -o ifdtool.o ifdtool.c
+cc -O2 -g -Wall -Wextra -Wmissing-prototypes -Werror -I../../src/commonlib/include -I../../src/commonlib/bsd/include -I../cbfstool/flashmap -include ../../src/commonlib/bsd/include/commonlib/bsd/compiler.h -c -o fmap.o ../cbfstool/flashmap/fmap.c
+cc -O2 -g -Wall -Wextra -Wmissing-prototypes -Werror -I../../src/commonlib/include -I../../src/commonlib/bsd/include -I../cbfstool/flashmap -include ../../src/commonlib/bsd/include/commonlib/bsd/compiler.h -c -o kv_pair.o ../cbfstool/flashmap/kv_pair.c
+cc -O2 -g -Wall -Wextra -Wmissing-prototypes -Werror -I../../src/commonlib/include -I../../src/commonlib/bsd/include -I../cbfstool/flashmap -include ../../src/commonlib/bsd/include/commonlib/bsd/compiler.h -c -o valstr.o ../cbfstool/flashmap/valstr.c
+cc -o ifdtool ifdtool.o fmap.o kv_pair.o valstr.o
+Installing ifdtool
+mkdir -p /usr/local/bin
+/usr/bin/env install ifdtool /usr/local/bin
+
+
+Detected cleaned_bios.rom at /home/nyancat/Code/coreboot_thinkpad_x220/cleaned_bios.rom
+
+
+Extracting blobs from cleaned bios rom
+File /home/nyancat/Code/coreboot_thinkpad_x220/cleaned_bios.rom is 16777216 bytes
+  Flash Region 0 (Flash Descriptor): 00000000 - 00000fff
+  Flash Region 1 (BIOS): 00500000 - 007fffff
+  Flash Region 2 (Intel ME): 00003000 - 004fffff
+  Flash Region 3 (GbE): 00001000 - 00002fff
+  Flash Region 4 (Platform Data): 00fff000 - 00000fff (unused)
+
+
+Detected vgabios firmware at /home/nyancat/Code/coreboot_thinkpad_x220/vga-8086-0126.bin
+
+
+Creating /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/lenovo/x220/ directory to store blob files
+Copying blobs extracted from cleaned_bios.rom to /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/lenovo/x220/
+Copying vgabios to /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/lenovo/x220/
+
+
+Found coreboot.config at /home/nyancat/Code/coreboot_thinkpad_x220/coreboot.config
+Copying coreboot.config file to /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/.config
+
+
+Detected 8 CPU cores available: 4 CPU cores will be used
+
+Running make crossgcc-i386 CPUS=4
+Welcome to the coreboot cross toolchain builder v2021-11-02_6dad77d64a
+
+Building toolchain using 4 thread(s).
+
+Target architecture is i386-elf
+
+Found compatible Ada compiler, enabling Ada support by default.
+
+Downloading and verifying tarballs ...
+ * gmp-6.2.1.tar.xz (downloading from https://ftpmirror.gnu.org/gmp/gmp-6.2.1.tar.xz)... 100%... hash verified (0578d48607ec0e272177d175fd1807c30b00fdf2)
+ * mpfr-4.1.0.tar.xz (downloading from https://ftpmirror.gnu.org/mpfr/mpfr-4.1.0.tar.xz)... 100%... hash verified (159c3a58705662bfde4dc93f2617f3660855ead6)
+ * mpc-1.2.1.tar.gz (downloading from https://ftpmirror.gnu.org/mpc/mpc-1.2.1.tar.gz)... 100%... hash verified (2a4919abf445c6eda4e120cd669b8733ce337227)
+ * binutils-2.37.tar.xz (downloading from https://ftpmirror.gnu.org/binutils/binutils-2.37.tar.xz)... 100%... hash verified (e9cf391b000010d6c752771974b394c9c743c928)
+ * gcc-11.2.0.tar.xz (downloading from https://ftpmirror.gnu.org/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz)... 100%... hash verified (f902ccacecf8949978d6261e9f1d034cff73ffdb)
+Downloaded tarballs ... ok
+Unpacking and patching ...
+ * gmp-6.2.1.tar.xz
+   o gmp-6.2.1_generic-build.patch
+ * mpfr-4.1.0.tar.xz
+ * mpc-1.2.1.tar.gz
+ * binutils-2.37.tar.xz
+   o binutils-2.37_as-ipxe.patch
+   o binutils-2.37_mips-gold.patch
+   o binutils-2.37_no-bfd-doc.patch
+   o binutils-2.37_no-makeinfo.patch
+ * gcc-11.2.0.tar.xz
+   o gcc-11.2.0_ada-musl_workaround.patch
+   o gcc-11.2.0_asan_shadow_offset_callback.patch
+   o gcc-11.2.0_gnat.patch
+   o gcc-11.2.0_libcpp.patch
+   o gcc-11.2.0_libgcc.patch
+Unpacked and patched ... ok
+Building packages ...
+Building GMP v6.2.1 for host ... ok
+Building MPFR v4.1.0 for host ... ok
+Building MPC v1.2.1 for host ... ok
+Building BINUTILS v2.37 for target ... ok
+Building GCC v11.2.0 for target ... ok
+Packages built ... ok
+Copied EDK2 tools template ... ok
+Cleaning up temporary files... ok
+
+You can now run i386-elf cross GCC from /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc.
+Welcome to the coreboot cross toolchain builder v2021-11-02_6dad77d64a
+
+Building toolchain using 4 thread(s).
+
+Downloading and verifying tarballs ...
+ * nasm-2.15.05.tar.bz2 (downloading from https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/nasm-2.15.05.tar.bz2)... 100%... hash verified (c0869e9ac854140bf99c989a711102ce6367243f)
+Downloaded tarballs ... ok
+Unpacking and patching ...
+ * nasm-2.15.05.tar.bz2
+Unpacked and patched ... ok
+Building packages ...
+Building NASM v2.15.05 for host ... ok
+Packages built ... ok
+Copied EDK2 tools template ... ok
+Cleaning up temporary files... ok
+
+You can now run NASM from /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc.
+Welcome to the coreboot cross toolchain builder v2021-11-02_6dad77d64a
+
+Building toolchain using 4 thread(s).
+
+Downloading and verifying tarballs ...
+ * acpica-unix2-20210331.tar.gz (downloading from https://acpica.org/sites/acpica/files/acpica-unix2-20210331.tar.gz)... 100%... hash verified (1a4006727962daf63a181c853695ca69bdf7d541)
+Downloaded tarballs ... ok
+Unpacking and patching ...
+ * acpica-unix2-20210331.tar.gz
+   o acpica-unix2-20210331_iasl.patch
+Unpacked and patched ... ok
+Building packages ...
+Building IASL v20210331 for host ... ok
+Packages built ... ok
+Copied EDK2 tools template ... ok
+Cleaning up temporary files... ok
+
+You can now run IASL ACPI compiler from /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc.
+
+Running make iasl
+Welcome to the coreboot cross toolchain builder v2021-11-02_6dad77d64a
+
+Building toolchain using 1 thread(s).
+
+Downloading and verifying tarballs ...
+ * acpica-unix2-20210331.tar.gz (cached)... hash verified (1a4006727962daf63a181c853695ca69bdf7d541)
+Downloaded tarballs ... ok
+Unpacking and patching ...
+ * acpica-unix2-20210331.tar.gz
+   o acpica-unix2-20210331_iasl.patch
+Unpacked and patched ... ok
+Building packages ...
+Skipping IASL v20210331 for host as it is already built
+Packages built ... ok
+Copied EDK2 tools template ... ok
+Cleaning up temporary files... ok
+
+You can now run IASL ACPI compiler from /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc.
+
+Making coreboot rom
+Submodule '3rdparty/amd_blobs' (https://review.coreboot.org/amd_blobs) registered for path '3rdparty/amd_blobs'
+Submodule 'arm-trusted-firmware' (https://review.coreboot.org/arm-trusted-firmware.git) registered for path '3rdparty/arm-trusted-firmware'
+Submodule '3rdparty/blobs' (https://review.coreboot.org/blobs.git) registered for path '3rdparty/blobs'
+Submodule '3rdparty/chromeec' (https://review.coreboot.org/chrome-ec.git) registered for path '3rdparty/chromeec'
+Submodule '3rdparty/cmocka' (https://review.coreboot.org/cmocka.git) registered for path '3rdparty/cmocka'
+Submodule '3rdparty/ffs' (https://review.coreboot.org/ffs.git) registered for path '3rdparty/ffs'
+Submodule '3rdparty/fsp' (https://review.coreboot.org/fsp.git) registered for path '3rdparty/fsp'
+Submodule 'intel-microcode' (https://review.coreboot.org/intel-microcode.git) registered for path '3rdparty/intel-microcode'
+Submodule '3rdparty/intel-sec-tools' (https://review.coreboot.org/9esec-security-tooling.git) registered for path '3rdparty/intel-sec-tools'
+Submodule 'libgfxinit' (https://review.coreboot.org/libgfxinit.git) registered for path '3rdparty/libgfxinit'
+Submodule 'libhwbase' (https://review.coreboot.org/libhwbase.git) registered for path '3rdparty/libhwbase'
+Submodule 'opensbi' (https://review.coreboot.org/opensbi.git) registered for path '3rdparty/opensbi'
+Submodule '3rdparty/qc_blobs' (https://review.coreboot.org/qc_blobs.git) registered for path '3rdparty/qc_blobs'
+Submodule '3rdparty/stm' (https://review.coreboot.org/STM) registered for path '3rdparty/stm'
+Submodule 'vboot' (https://review.coreboot.org/vboot.git) registered for path '3rdparty/vboot'
+Submodule 'util/nvidia-cbootimage' (https://review.coreboot.org/nvidia-cbootimage.git) registered for path 'util/nvidia/cbootimage'
+Skipping submodule '3rdparty/amd_blobs'
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/arm-trusted-firmware'...
+Skipping submodule '3rdparty/blobs'
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/chromeec'...
+Skipping submodule '3rdparty/cmocka'
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/ffs'...
+Skipping submodule '3rdparty/fsp'
+Skipping submodule '3rdparty/intel-microcode'
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/intel-sec-tools'...
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/libgfxinit'...
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/libhwbase'...
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/opensbi'...
+Skipping submodule '3rdparty/qc_blobs'
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/stm'...
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/vboot'...
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/nvidia/cbootimage'...
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/cmocka'...
+fatal: destination path '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs' already exists and is not an empty directory.
+fatal: clone of 'https://review.coreboot.org/blobs.git' into submodule path '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs' failed
+Failed to clone '3rdparty/blobs'. Retry scheduled
+fatal: destination path '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs' already exists and is not an empty directory.
+fatal: clone of 'https://review.coreboot.org/blobs.git' into submodule path '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs' failed
+Failed to clone '3rdparty/blobs' a second time, aborting
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/intel-microcode'...
+Skipping submodule '3rdparty/amd_blobs'
+Skipping submodule '3rdparty/blobs'
+Skipping submodule '3rdparty/cmocka'
+Skipping submodule '3rdparty/fsp'
+Skipping submodule '3rdparty/intel-microcode'
+Skipping submodule '3rdparty/qc_blobs'
+fatal: destination path '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs' already exists and is not an empty directory.
+fatal: clone of 'https://review.coreboot.org/blobs.git' into submodule path '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs' failed
+Failed to clone '3rdparty/blobs'. Retry scheduled
+fatal: destination path '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs' already exists and is not an empty directory.
+fatal: clone of 'https://review.coreboot.org/blobs.git' into submodule path '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs' failed
+Failed to clone '3rdparty/blobs' a second time, aborting
+#
+# No change to /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/.config
+#
+build/auto.conf:1534:notice: override: reassigning to symbol LAPIC_ACCESS_MODE
+    HOSTCC     util/sconfig/lex.yy.o
+    HOSTCC     util/sconfig/sconfig.tab.o
+    HOSTCC     util/sconfig/main.o
+    HOSTCC     util/sconfig/sconfig (link)
+    SCONFIG    mainboard/lenovo/x220/devicetree.cb
+    HOSTCC     nvramtool/cli/nvramtool.o
+    HOSTCC     nvramtool/cli/opts.o
+    HOSTCC     nvramtool/cmos_lowlevel.o
+    HOSTCC     nvramtool/cmos_ops.o
+    HOSTCC     nvramtool/common.o
+    HOSTCC     nvramtool/compute_ip_checksum.o
+    HOSTCC     nvramtool/hexdump.o
+    HOSTCC     nvramtool/input_file.o
+    HOSTCC     nvramtool/layout.o
+    HOSTCC     nvramtool/accessors/layout-common.o
+    HOSTCC     nvramtool/accessors/layout-text.o
+    HOSTCC     nvramtool/accessors/layout-bin.o
+    HOSTCC     nvramtool/lbtable.o
+    HOSTCC     nvramtool/reg_expr.o
+    HOSTCC     nvramtool/cbfs.o
+    HOSTCC     nvramtool/accessors/cmos-mem.o
+    HOSTCC     nvramtool/nvramtool (link)
+    OPTION     option_table.h
+    CC         bootblock/mainboard/lenovo/x220/static.o
+    CC         bootblock/acpi/acpi_pm.o
+    CC         bootblock/arch/x86/boot.o
+    CC         bootblock/arch/x86/cf9_reset.o
+    CC         bootblock/arch/x86/cpu_common.o
+    CC         bootblock/arch/x86/gdt_init.o
+    GEN        build.h
+    CC         bootblock/arch/x86/id.o
+    CC         bootblock/arch/x86/memcpy.o
+    HOSTCC     cbfstool/fmaptool.o
+    HOSTCC     cbfstool/cbfs_sections.o
+    HOSTCC     cbfstool/fmap_from_fmd.o
+    HOSTCC     cbfstool/fmd.o
+    HOSTCC     cbfstool/fmd_parser.o
+    HOSTCC     cbfstool/fmd_scanner.o
+    HOSTCC     cbfstool/fmap.o
+    HOSTCC     cbfstool/kv_pair.o
+    HOSTCC     cbfstool/valstr.o
+    HOSTCC     cbfstool/fmaptool (link)
+    FMAP       build/util/cbfstool/fmaptool -h build/fmap_config.h build/fmap.fmd build/fmap.fmap
+SUCCESS: Wrote 224 bytes to file 'build/fmap.fmap' (and generated header)
+The sections containing CBFSes are: COREBOOT
+    CP         bootblock/arch/x86/memlayout.ld
+    CC         bootblock/arch/x86/memmove.o
+    CC         bootblock/arch/x86/memset.o
+    CC         bootblock/arch/x86/mmap_boot.o
+    CC         bootblock/arch/x86/post.o
+    CC         bootblock/arch/x86/walkcbfs.o
+    CC         bootblock/commonlib/bsd/cbfs_mcache.o
+    CC         bootblock/commonlib/bsd/cbfs_private.o
+    CC         bootblock/commonlib/bsd/lz4_wrapper.o
+    CC         bootblock/commonlib/cbfs.o
+    CC         bootblock/commonlib/iobuf.o
+    CC         bootblock/commonlib/mem_pool.o
+    CC         bootblock/commonlib/region.o
+    CC         bootblock/console/console.o
+    CC         bootblock/console/die.o
+    CC         bootblock/console/init.o
+    CC         bootblock/console/post.o
+    CC         bootblock/console/printk.o
+    CC         bootblock/console/vsprintf.o
+    CC         bootblock/console/vtxprintf.o
+    CC         bootblock/cpu/intel/car/bootblock.o
+    CC         bootblock/cpu/intel/car/non-evict/cache_as_ram.o
+    CC         bootblock/cpu/intel/common/fsb.o
+    CC         bootblock/cpu/intel/microcode/microcode.o
+    CC         bootblock/cpu/intel/microcode/microcode_asm.o
+    CC         bootblock/cpu/intel/model_206ax/bootblock.o
+    CC         bootblock/cpu/x86/early_reset.o
+    CC         bootblock/cpu/x86/entry16.o
+    CC         bootblock/cpu/x86/entry32.o
+    CC         bootblock/cpu/x86/lapic/boot_cpu.o
+    CC         bootblock/cpu/x86/lapic/lapic.o
+    CC         bootblock/cpu/x86/mtrr/debug.o
+    CC         bootblock/cpu/x86/mtrr/earlymtrr.o
+    CC         bootblock/cpu/x86/name/name.o
+    CC         bootblock/cpu/x86/pae/pgtbl.o
+    CC         bootblock/cpu/x86/reset16.o
+    CC         bootblock/cpu/x86/tsc/delay_tsc.o
+    CC         bootblock/device/device_const.o
+    CC         bootblock/device/i2c.o
+    CC         bootblock/device/mmio.o
+    CC         bootblock/device/pci_early.o
+    CC         bootblock/device/pci_ops.o
+    CC         bootblock/drivers/pc80/pc/i8254.o
+    CC         bootblock/drivers/pc80/rtc/mc146818rtc.o
+    CC         bootblock/drivers/pc80/rtc/mc146818rtc_boot.o
+    CC         bootblock/drivers/pc80/rtc/option.o
+    CC         bootblock/drivers/pc80/tpm/tis.o
+    CC         bootblock/drivers/spi/adesto.o
+    CC         bootblock/drivers/spi/amic.o
+    CC         bootblock/drivers/spi/atmel.o
+    CC         bootblock/drivers/spi/bitbang.o
+    CC         bootblock/drivers/spi/eon.o
+    CC         bootblock/drivers/spi/gigadevice.o
+    CC         bootblock/drivers/spi/macronix.o
+    CC         bootblock/drivers/spi/spansion.o
+    CC         bootblock/drivers/spi/spi-generic.o
+    CC         bootblock/drivers/spi/spi_flash.o
+    CC         bootblock/drivers/spi/sst.o
+    CC         bootblock/drivers/spi/stmicro.o
+    CC         bootblock/drivers/spi/winbond.o
+    CC         bootblock/ec/acpi/ec.o
+    CC         bootblock/ec/lenovo/h8/sense.o
+    CC         bootblock/ec/lenovo/pmh7/pmh7.o
+    CC         bootblock/lib/boot_device.o
+    CC         bootblock/lib/bootblock.o
+    CC         bootblock/lib/bootmode.o
+    CC         bootblock/lib/cbfs.o
+    CC         bootblock/lib/cbmem_console.o
+    CC         bootblock/lib/crc_byte.o
+    CC         bootblock/lib/delay.o
+    CC         bootblock/lib/fmap.o
+    CC         bootblock/lib/gcc.o
+    CC         bootblock/lib/halt.o
+    CC         bootblock/lib/hexdump.o
+    CC         bootblock/lib/libgcc.o
+    CC         bootblock/lib/list.o
+    CC         bootblock/lib/memchr.o
+    CC         bootblock/lib/memcmp.o
+    CC         bootblock/lib/prog_loaders.o
+    CC         bootblock/lib/prog_ops.o
+    CP         bootblock/lib/program.ld
+    CC         bootblock/lib/reset.o
+    CC         bootblock/lib/string.o
+    CC         bootblock/lib/version.o
+    CC         bootblock/mainboard/lenovo/x220/early_init.o
+    CC         bootblock/mainboard/lenovo/x220/variants/x220/gpio.o
+    CC         bootblock/northbridge/intel/sandybridge/bootblock.o
+    CC         bootblock/security/tpm/tspi/tspi.o
+    CC         bootblock/security/tpm/tss/tcg-1.2/tss.o
+    CC         bootblock/southbridge/intel/bd82x6x/bootblock.o
+    CC         bootblock/southbridge/intel/bd82x6x/early_pch.o
+    CC         bootblock/southbridge/intel/common/gpio.o
+    CC         bootblock/southbridge/intel/common/me.o
+    CC         bootblock/southbridge/intel/common/pmbase.o
+    CC         bootblock/southbridge/intel/common/reset.o
+    CC         bootblock/southbridge/intel/common/rtc.o
+    CC         bootblock/southbridge/intel/common/spi.o
+    CC         bootblock/southbridge/intel/common/usb_debug.o
+    LINK       cbfs/fallback/bootblock.debug
+    OBJCOPY    cbfs/fallback/bootblock.elf
+    OBJCOPY    bootblock.raw.elf
+    OBJCOPY    bootblock.raw.bin
+    CC         romstage/mainboard/lenovo/x220/static.o
+    CC         romstage/acpi/acpi_pm.o
+    CC         romstage/arch/x86/assembly_entry.o
+    CC         romstage/arch/x86/boot.o
+    CC         romstage/arch/x86/cf9_reset.o
+    CC         romstage/arch/x86/cpu_common.o
+    CC         romstage/arch/x86/gdt_init.o
+    CC         romstage/arch/x86/memcpy.o
+    CP         romstage/arch/x86/memlayout.ld
+    CC         romstage/arch/x86/memmove.o
+    CC         romstage/arch/x86/memset.o
+    CC         romstage/arch/x86/mmap_boot.o
+    CC         romstage/arch/x86/post.o
+    CC         romstage/arch/x86/postcar_loader.o
+    CC         romstage/commonlib/bsd/cbfs_mcache.o
+    CC         romstage/commonlib/bsd/cbfs_private.o
+    CC         romstage/commonlib/bsd/elog.o
+    CC         romstage/commonlib/bsd/lz4_wrapper.o
+    CC         romstage/commonlib/cbfs.o
+    CC         romstage/commonlib/iobuf.o
+    CC         romstage/commonlib/mem_pool.o
+    CC         romstage/commonlib/region.o
+    CC         romstage/console/console.o
+    CC         romstage/console/die.o
+    CC         romstage/console/init.o
+    CC         romstage/console/post.o
+    CC         romstage/console/printk.o
+    CC         romstage/console/vsprintf.o
+    CC         romstage/console/vtxprintf.o
+    CC         romstage/cpu/intel/car/romstage.o
+    CC         romstage/cpu/intel/common/fsb.o
+    CC         romstage/cpu/intel/microcode/microcode.o
+    CC         romstage/cpu/intel/model_206ax/common.o
+    CC         romstage/cpu/x86/lapic/boot_cpu.o
+    CC         romstage/cpu/x86/lapic/lapic.o
+    CC         romstage/cpu/x86/mtrr/debug.o
+    CC         romstage/cpu/x86/mtrr/earlymtrr.o
+    CC         romstage/cpu/x86/name/name.o
+    CC         romstage/cpu/x86/pae/pgtbl.o
+    CC         romstage/cpu/x86/smm/tseg_region.o
+    CC         romstage/cpu/x86/tsc/delay_tsc.o
+    CC         romstage/device/device_const.o
+    CC         romstage/device/dram/ddr2.o
+    CC         romstage/device/dram/ddr3.o
+    CC         romstage/device/dram/ddr4.o
+    CC         romstage/device/dram/ddr_common.o
+    CC         romstage/device/dram/lpddr4.o
+    CC         romstage/device/i2c.o
+    CC         romstage/device/mmio.o
+    CC         romstage/device/pci_early.o
+    CC         romstage/device/pci_ops.o
+    CC         romstage/drivers/mrc_cache/mrc_cache.o
+    CC         romstage/drivers/pc80/pc/i8254.o
+    CC         romstage/drivers/pc80/rtc/mc146818rtc.o
+    CC         romstage/drivers/pc80/rtc/mc146818rtc_boot.o
+    CC         romstage/drivers/pc80/rtc/option.o
+    CC         romstage/drivers/pc80/tpm/tis.o
+    CC         romstage/drivers/spi/adesto.o
+    CC         romstage/drivers/spi/amic.o
+    CC         romstage/drivers/spi/atmel.o
+    CC         romstage/drivers/spi/bitbang.o
+    CC         romstage/drivers/spi/eon.o
+    CC         romstage/drivers/spi/gigadevice.o
+    CC         romstage/drivers/spi/macronix.o
+    CC         romstage/drivers/spi/spansion.o
+    CC         romstage/drivers/spi/spi-generic.o
+    CC         romstage/drivers/spi/spi_flash.o
+    CC         romstage/drivers/spi/sst.o
+    CC         romstage/drivers/spi/stmicro.o
+    CC         romstage/drivers/spi/winbond.o
+    CC         romstage/ec/acpi/ec.o
+    CC         romstage/ec/lenovo/h8/panic.o
+    CC         romstage/ec/lenovo/h8/sense.o
+    CC         romstage/ec/lenovo/pmh7/pmh7.o
+    CC         romstage/lib/boot_device.o
+    CC         romstage/lib/bootmode.o
+    CC         romstage/lib/cbfs.o
+    CC         romstage/lib/cbmem_common.o
+    CC         romstage/lib/cbmem_console.o
+    CC         romstage/lib/compute_ip_checksum.o
+    CC         romstage/lib/crc_byte.o
+    CC         romstage/lib/delay.o
+    CC         romstage/lib/dimm_info_util.o
+    CC         romstage/lib/ext_stage_cache.o
+    CC         romstage/lib/fmap.o
+    CC         romstage/lib/gcc.o
+    CC         romstage/lib/halt.o
+    CC         romstage/lib/hexdump.o
+    CC         romstage/lib/imd.o
+    CC         romstage/lib/imd_cbmem.o
+    CC         romstage/lib/libgcc.o
+    CC         romstage/lib/list.o
+    CC         romstage/lib/lzma.o
+    CC         romstage/lib/lzmadecode.o
+    CC         romstage/lib/memchr.o
+    CC         romstage/lib/memcmp.o
+    CC         romstage/lib/memrange.o
+    CC         romstage/lib/prog_loaders.o
+    CC         romstage/lib/prog_ops.o
+    CP         romstage/lib/program.ld
+    CC         romstage/lib/ramtest.o
+    CC         romstage/lib/region_file.o
+    CC         romstage/lib/reset.o
+    CC         romstage/lib/rmodule.o
+    CC         romstage/lib/romstage_handoff.o
+    CC         romstage/lib/rtc.o
+    CC         romstage/lib/selfboot.o
+    CC         romstage/lib/spd_bin.o
+    CC         romstage/lib/stack.o
+    CC         romstage/lib/string.o
+    CC         romstage/lib/version.o
+    CC         romstage/mainboard/lenovo/x220/early_init.o
+    CC         romstage/mainboard/lenovo/x220/variants/x220/gpio.o
+    CC         romstage/mainboard/lenovo/x220/variants/x220/romstage.o
+    CC         romstage/northbridge/intel/sandybridge/common.o
+    CC         romstage/northbridge/intel/sandybridge/early_dmi.o
+    CC         romstage/northbridge/intel/sandybridge/early_init.o
+    CC         romstage/northbridge/intel/sandybridge/memmap.o
+    CC         romstage/northbridge/intel/sandybridge/raminit.o
+    CC         romstage/northbridge/intel/sandybridge/raminit_common.o
+    CC         romstage/northbridge/intel/sandybridge/raminit_iosav.o
+    CC         romstage/northbridge/intel/sandybridge/raminit_native.o
+    CC         romstage/northbridge/intel/sandybridge/raminit_shared.o
+    CC         romstage/northbridge/intel/sandybridge/raminit_tables.o
+    CC         romstage/northbridge/intel/sandybridge/romstage.o
+    CC         romstage/security/memory/memory.o
+    CC         romstage/security/tpm/tspi/tspi.o
+    CC         romstage/security/tpm/tss/tcg-1.2/tss.o
+    CC         romstage/southbridge/intel/bd82x6x/early_me.o
+    CC         romstage/southbridge/intel/bd82x6x/early_pch.o
+    CC         romstage/southbridge/intel/bd82x6x/early_rcba.o
+    CC         romstage/southbridge/intel/bd82x6x/early_thermal.o
+    CC         romstage/southbridge/intel/bd82x6x/early_usb.o
+    CC         romstage/southbridge/intel/bd82x6x/me_status.o
+    CC         romstage/southbridge/intel/common/early_smbus.o
+    CC         romstage/southbridge/intel/common/gpio.o
+    CC         romstage/southbridge/intel/common/me.o
+    CC         romstage/southbridge/intel/common/pmbase.o
+    CC         romstage/southbridge/intel/common/pmclib.o
+    CC         romstage/southbridge/intel/common/reset.o
+    CC         romstage/southbridge/intel/common/rtc.o
+    CC         romstage/southbridge/intel/common/smbus.o
+    CC         romstage/southbridge/intel/common/spi.o
+    CC         romstage/southbridge/intel/common/usb_debug.o
+    LINK       cbfs/fallback/romstage.debug
+    OBJCOPY    cbfs/fallback/romstage.elf
+    CC         ramstage/superio/common/conf_mode.o
+    CC         ramstage/southbridge/intel/common/acpi_pirq_gen.o
+    CC         ramstage/southbridge/intel/common/gpio.o
+    CC         ramstage/southbridge/intel/common/madt.o
+    CC         ramstage/southbridge/intel/common/me.o
+    CC         ramstage/southbridge/intel/common/pciehp.o
+    CC         ramstage/southbridge/intel/common/pmbase.o
+    CC         ramstage/southbridge/intel/common/pmutil.o
+    CC         ramstage/southbridge/intel/common/rcba_pirq.o
+    CC         ramstage/southbridge/intel/common/reset.o
+    CC         ramstage/southbridge/intel/common/rtc.o
+    CC         ramstage/southbridge/intel/common/smbus.o
+    CC         ramstage/southbridge/intel/common/smbus_ops.o
+    CC         ramstage/southbridge/intel/common/smi.o
+    CC         ramstage/southbridge/intel/common/spi.o
+    CC         ramstage/southbridge/intel/common/usb_debug.o
+    CC         ramstage/southbridge/intel/common/watchdog.o
+    CC         ramstage/southbridge/intel/bd82x6x/azalia.o
+    CC         ramstage/southbridge/intel/bd82x6x/fadt.o
+    CC         ramstage/southbridge/intel/bd82x6x/lpc.o
+    CC         ramstage/southbridge/intel/bd82x6x/me.o
+    CC         ramstage/southbridge/intel/bd82x6x/me_8.x.o
+    CC         ramstage/southbridge/intel/bd82x6x/me_common.o
+    CC         ramstage/southbridge/intel/bd82x6x/me_status.o
+    CC         ramstage/southbridge/intel/bd82x6x/pch.o
+    CC         ramstage/southbridge/intel/bd82x6x/pci.o
+    CC         ramstage/southbridge/intel/bd82x6x/pcie.o
+    CC         ramstage/southbridge/intel/bd82x6x/sata.o
+    CC         ramstage/southbridge/intel/bd82x6x/smbus.o
+    CC         ramstage/southbridge/intel/bd82x6x/usb_ehci.o
+    CC         ramstage/southbridge/intel/bd82x6x/usb_xhci.o
+    CC         ramstage/security/tpm/tss/tcg-1.2/tss.o
+    CC         ramstage/security/tpm/tspi/tspi.o
+    CC         ramstage/security/memory/memory.o
+    CC         ramstage/security/memory/memory_clear.o
+    CC         ramstage/northbridge/intel/sandybridge/acpi.o
+    CC         ramstage/northbridge/intel/sandybridge/common.o
+    CC         ramstage/northbridge/intel/sandybridge/gma.o
+    CC         ramstage/northbridge/intel/sandybridge/memmap.o
+    CC         ramstage/northbridge/intel/sandybridge/northbridge.o
+    CC         ramstage/northbridge/intel/sandybridge/pcie.o
+    CC         ramstage/mainboard/lenovo/x220/static.o
+    CC         ramstage/mainboard/lenovo/x220/acpi_tables.o
+    CC         ramstage/mainboard/lenovo/x220/hda_verb.o
+    CC         ramstage/mainboard/lenovo/x220/mainboard.o
+    CC         ramstage/lib/b64_decode.o
+    CC         ramstage/lib/boot_device.o
+    CC         ramstage/lib/bootmem.o
+    CC         ramstage/lib/bootmode.o
+    CC         ramstage/lib/cbfs.o
+    CC         ramstage/lib/cbmem_common.o
+    CC         ramstage/lib/cbmem_console.o
+    CC         ramstage/lib/compute_ip_checksum.o
+    CC         ramstage/lib/coreboot_table.o
+    CC         ramstage/lib/crc_byte.o
+    CC         ramstage/lib/delay.o
+    CC         ramstage/lib/dimm_info_util.o
+    CC         ramstage/lib/dp_aux.o
+    CC         ramstage/lib/edid.o
+    CC         ramstage/lib/edid_fill_fb.o
+    CC         ramstage/lib/ext_stage_cache.o
+    CC         ramstage/lib/fallback_boot.o
+    CC         ramstage/lib/fmap.o
+    CC         ramstage/lib/gcc.o
+    CC         ramstage/lib/halt.o
+    CC         ramstage/lib/hardwaremain.o
+    CC         ramstage/lib/hexdump.o
+    CC         ramstage/lib/hexstrtobin.o
+    CC         ramstage/lib/imd.o
+    CC         ramstage/lib/imd_cbmem.o
+    CC         ramstage/lib/list.o
+    CC         ramstage/lib/lzma.o
+    CC         ramstage/lib/lzmadecode.o
+    CC         ramstage/lib/malloc.o
+    CC         ramstage/lib/memchr.o
+    CC         ramstage/lib/memcmp.o
+    CC         ramstage/lib/memrange.o
+    CC         ramstage/lib/prog_loaders.o
+    CC         ramstage/lib/prog_ops.o
+    CC         ramstage/lib/region_file.o
+    CC         ramstage/lib/reset.o
+    CC         ramstage/lib/rmodule.o
+    CC         ramstage/lib/romstage_handoff.o
+    CC         ramstage/lib/rtc.o
+    CC         ramstage/lib/selfboot.o
+    CC         ramstage/lib/stack.o
+    CC         ramstage/lib/string.o
+    CC         ramstage/lib/uuid.o
+    CC         ramstage/lib/version.o
+    CC         ramstage/lib/wrdd.o
+    CC         ramstage/ec/lenovo/pmh7/pmh7.o
+    CC         ramstage/ec/lenovo/h8/bluetooth.o
+    CC         ramstage/ec/lenovo/h8/h8.o
+    CC         ramstage/ec/lenovo/h8/panic.o
+    CC         ramstage/ec/lenovo/h8/sense.o
+    CC         ramstage/ec/lenovo/h8/ssdt.o
+    CC         ramstage/ec/lenovo/h8/wwan.o
+    CC         ramstage/ec/acpi/ec.o
+    CC         ramstage/drivers/wifi/generic/acpi.o
+    CC         ramstage/drivers/wifi/generic/generic.o
+    CC         ramstage/drivers/wifi/generic/smbios.o
+    CC         ramstage/drivers/tpm/ppi_stub.o
+    CC         ramstage/drivers/tpm/tpm.o
+    CC         ramstage/drivers/spi/adesto.o
+    CC         ramstage/drivers/spi/amic.o
+    CC         ramstage/drivers/spi/atmel.o
+    CC         ramstage/drivers/spi/bitbang.o
+    CC         ramstage/drivers/spi/boot_device_rw_nommap.o
+    CC         ramstage/drivers/spi/eon.o
+    CC         ramstage/drivers/spi/gigadevice.o
+    CC         ramstage/drivers/spi/macronix.o
+    CC         ramstage/drivers/spi/spansion.o
+    CC         ramstage/drivers/spi/spi-generic.o
+    CC         ramstage/drivers/spi/spi_flash.o
+    CC         ramstage/drivers/spi/sst.o
+    CC         ramstage/drivers/spi/stmicro.o
+    CC         ramstage/drivers/spi/winbond.o
+    CC         ramstage/drivers/ricoh/rce822/rce822.o
+    CC         ramstage/drivers/pc80/tpm/tis.o
+    CC         ramstage/drivers/pc80/rtc/mc146818rtc.o
+    CC         ramstage/drivers/pc80/rtc/mc146818rtc_boot.o
+    CC         ramstage/drivers/pc80/rtc/option.o
+    CC         ramstage/drivers/pc80/pc/i8254.o
+    CC         ramstage/drivers/pc80/pc/i8259.o
+    CC         ramstage/drivers/pc80/pc/isa-dma.o
+    CC         ramstage/drivers/pc80/pc/keyboard.o
+    CC         ramstage/drivers/mrc_cache/mrc_cache.o
+    CC         ramstage/drivers/mipi/panel.o
+    CC         ramstage/drivers/intel/gma/acpi.o
+    CC         ramstage/drivers/intel/gma/int15.o
+    CC         ramstage/drivers/intel/gma/opregion.o
+    CC         ramstage/drivers/i2c/at24rf08c/at24rf08c.o
+    CC         ramstage/drivers/i2c/at24rf08c/lenovo_serials.o
+    CC         ramstage/drivers/broadcom/bcm57xx_aspm_disable.o
+    CC         ramstage/device/oprom/realmode/x86.o
+    CC         ramstage/device/oprom/realmode/x86_asm.o
+    CC         ramstage/device/oprom/realmode/x86_interrupts.o
+    CC         ramstage/device/dram/ddr2.o
+    CC         ramstage/device/dram/ddr3.o
+    CC         ramstage/device/dram/ddr4.o
+    CC         ramstage/device/dram/ddr_common.o
+    CC         ramstage/device/dram/lpddr4.o
+    CC         ramstage/device/dram/spd.o
+    CC         ramstage/device/azalia_device.o
+    CC         ramstage/device/cardbus_device.o
+    CC         ramstage/device/cpu_device.o
+    CC         ramstage/device/device.o
+    CC         ramstage/device/device_const.o
+    CC         ramstage/device/device_util.o
+    CC         ramstage/device/gpio.o
+    CC         ramstage/device/i2c.o
+    CC         ramstage/device/i2c_bus.o
+    CC         ramstage/device/mmio.o
+    CC         ramstage/device/pci_class.o
+    CC         ramstage/device/pci_device.o
+    CC         ramstage/device/pci_ops.o
+    CC         ramstage/device/pci_rom.o
+    CC         ramstage/device/pciexp_device.o
+    CC         ramstage/device/pcix_device.o
+    CC         ramstage/device/pnp_device.o
+    CC         ramstage/device/resource_allocator_common.o
+    CC         ramstage/device/resource_allocator_v4.o
+    CC         ramstage/device/root_device.o
+    CC         ramstage/device/smbus_ops.o
+    CC         ramstage/cpu/x86/tsc/delay_tsc.o
+    CC         smm/mainboard/lenovo/x220/static.o
+    CC         smm/acpi/acpi_pm.o
+    CC         smm/arch/x86/memcpy.o
+    CC         smm/arch/x86/memmove.o
+    CC         smm/arch/x86/memset.o
+    CC         smm/arch/x86/mmap_boot.o
+    CC         smm/commonlib/bsd/cbfs_mcache.o
+    CC         smm/commonlib/bsd/cbfs_private.o
+    CC         smm/commonlib/bsd/elog.o
+    CC         smm/commonlib/cbfs.o
+    CC         smm/commonlib/iobuf.o
+    CC         smm/commonlib/mem_pool.o
+    CC         smm/commonlib/region.o
+    CC         smm/console/die.o
+    CC         smm/console/post.o
+    CC         smm/cpu/intel/common/fsb.o
+    CC         smm/cpu/intel/model_206ax/common.o
+    CC         smm/cpu/intel/model_206ax/finalize.o
+    CC         smm/cpu/x86/pae/pgtbl.o
+    CC         smm/cpu/x86/smm/save_state.o
+    CC         smm/cpu/x86/smm/smi_trigger.o
+    CC         smm/cpu/x86/smm/smm_module_handler.o
+    CC         smm/cpu/x86/tsc/delay_tsc.o
+    CC         smm/device/device_const.o
+    CC         smm/device/pci_ops.o
+    CC         smm/drivers/pc80/pc/i8254.o
+    CC         smm/drivers/pc80/rtc/mc146818rtc.o
+    CC         smm/drivers/pc80/rtc/option.o
+    CC         smm/ec/acpi/ec.o
+    CC         smm/ec/lenovo/h8/sense.o
+    CC         smm/ec/lenovo/pmh7/pmh7.o
+    CC         smm/lib/boot_device.o
+    CC         smm/lib/cbfs.o
+    CC         smm/lib/crc_byte.o
+    CC         smm/lib/delay.o
+    CC         smm/lib/fmap.o
+    CC         smm/lib/gcc.o
+    CC         smm/lib/halt.o
+    CC         smm/lib/hexdump.o
+    CC         smm/lib/malloc.o
+    CC         smm/lib/memcmp.o
+    CC         smm/lib/reset.o
+    CC         smm/lib/string.o
+    CC         smm/lib/version.o
+    CC         smm/mainboard/lenovo/x220/smihandler.o
+    CC         smm/northbridge/intel/sandybridge/common.o
+    CC         smm/northbridge/intel/sandybridge/finalize.o
+    CC         smm/southbridge/intel/bd82x6x/me_common.o
+    CC         smm/southbridge/intel/bd82x6x/me_smm.o
+    CC         smm/southbridge/intel/bd82x6x/pch.o
+    CC         smm/southbridge/intel/bd82x6x/smihandler.o
+    CC         smm/southbridge/intel/common/finalize.o
+    CC         smm/southbridge/intel/common/gpio.o
+    CC         smm/southbridge/intel/common/pmbase.o
+    CC         smm/southbridge/intel/common/pmutil.o
+    CC         smm/southbridge/intel/common/smihandler.o
+    CP         rmodules_x86_32/lib/rmodule.ld
+    HOSTCC     cbfstool/rmodtool.o
+    HOSTCC     cbfstool/rmodule.o
+    HOSTCC     cbfstool/common.o
+    HOSTCC     cbfstool/elfheaders.o
+    HOSTCC     cbfstool/xdr.o
+    HOSTCC     cbfstool/rmodtool (link)
+    OBJCOPY    ramstage/cpu/x86/smm/smm.manual
+    CC         smmstub/cpu/x86/smm/smm_stub.o
+    OBJCOPY    ramstage/cpu/x86/smm/smmstub.manual
+    CC         ramstage/cpu/x86/smm/smi_trigger.o
+    CC         ramstage/cpu/x86/smm/smm_module_loader.o
+    CC         ramstage/cpu/x86/smm/tseg_region.o
+    CC         ramstage/cpu/x86/pae/pgtbl.o
+    CC         ramstage/cpu/x86/name/name.o
+    CC         ramstage/cpu/x86/mtrr/debug.o
+    CC         ramstage/cpu/x86/mtrr/mtrr.o
+    CC         ramstage/cpu/x86/lapic/boot_cpu.o
+    CC         ramstage/cpu/x86/lapic/lapic.o
+    CC         rmodules_x86_32/cpu/x86/sipi_vector.o
+    OBJCOPY    ramstage/cpu/x86/sipi_vector.manual
+    CC         ramstage/cpu/x86/backup_default_smm.o
+    CC         ramstage/cpu/x86/mp_init.o
+    CC         ramstage/cpu/intel/turbo/turbo.o
+    CC         ramstage/cpu/intel/smm/gen1/smmrelocate.o
+    CC         ramstage/cpu/intel/smm/smm_reloc.o
+    CC         ramstage/cpu/intel/model_206ax/acpi.o
+    CC         ramstage/cpu/intel/model_206ax/common.o
+    CC         ramstage/cpu/intel/model_206ax/model_206ax_init.o
+    CC         ramstage/cpu/intel/microcode/microcode.o
+    CC         ramstage/cpu/intel/common/common_init.o
+    CC         ramstage/cpu/intel/common/fsb.o
+    CC         ramstage/cpu/intel/common/hyperthreading.o
+    CC         ramstage/console/console.o
+    CC         ramstage/console/die.o
+    CC         ramstage/console/init.o
+    CC         ramstage/console/post.o
+    CC         ramstage/console/printk.o
+    CC         ramstage/console/vsprintf.o
+    CC         ramstage/console/vtxprintf.o
+    CC         ramstage/commonlib/bsd/cbfs_mcache.o
+    CC         ramstage/commonlib/bsd/cbfs_private.o
+    CC         ramstage/commonlib/bsd/elog.o
+    CC         ramstage/commonlib/bsd/lz4_wrapper.o
+    CC         ramstage/commonlib/cbfs.o
+    CC         ramstage/commonlib/iobuf.o
+    CC         ramstage/commonlib/mem_pool.o
+    CC         ramstage/commonlib/region.o
+    CC         ramstage/commonlib/sort.o
+    CC         ramstage/arch/x86/acpi.o
+    CC         ramstage/arch/x86/acpi_s3.o
+    CC         ramstage/arch/x86/boot.o
+    CC         ramstage/arch/x86/c_exit.o
+    CC         ramstage/arch/x86/c_start.o
+    CC         ramstage/arch/x86/cf9_reset.o
+    CC         ramstage/arch/x86/cpu.o
+    CC         ramstage/arch/x86/cpu_common.o
+    CC         ramstage/arch/x86/ebda.o
+    CC         ramstage/arch/x86/exception.o
+    CC         ramstage/arch/x86/idt.o
+    CC         ramstage/arch/x86/ioapic.o
+    CC         ramstage/arch/x86/memcpy.o
+    CC         ramstage/arch/x86/memmove.o
+    CC         ramstage/arch/x86/memset.o
+    CC         ramstage/arch/x86/mmap_boot.o
+    CC         ramstage/arch/x86/post.o
+    CC         ramstage/arch/x86/rdrand.o
+    CC         ramstage/arch/x86/smbios.o
+    CC         ramstage/arch/x86/smbios_defaults.o
+    CC         ramstage/arch/x86/tables.o
+    CC         ramstage/arch/x86/wakeup.o
+    CC         ramstage/acpi/acpi.o
+    CC         ramstage/acpi/acpi_pm.o
+    CC         ramstage/acpi/acpigen.o
+    CC         ramstage/acpi/acpigen_dptf.o
+    CC         ramstage/acpi/acpigen_dsm.o
+    CC         ramstage/acpi/acpigen_pci.o
+    CC         ramstage/acpi/acpigen_ps2_keybd.o
+    CC         ramstage/acpi/acpigen_usb.o
+    CC         ramstage/acpi/device.o
+    CC         ramstage/acpi/gnvs.o
+    CC         ramstage/acpi/pld.o
+    CC         ramstage/acpi/sata.o
+    CC         ramstage/acpi/soundwire.o
+    CP         ramstage/arch/x86/memlayout.ld
+    CP         ramstage/lib/program.ld
+    CC         generated/ramstage.o
+    CC         cbfs/fallback/ramstage.debug
+    CREATE     build/mainboard/lenovo/x220/cbfs-file.3rK4RL.out (from /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/.config)
+    IASL       build/dsdt.aml
+
+Intel ACPI Component Architecture
+ASL+ Optimizing Compiler/Disassembler version 20210331
+Copyright (c) 2000 - 2021 Intel Corporation
+
+coreboot toolchain v2021-11-02_6dad77d64a
+dsdt.asl   1055:    Name (PCKG, Package (0x01)
+Remark   2173 -             ^ Creation of named objects within a method is highly inefficient, use globals or method local variables instead (\_SB.PCI0.EHC1.HUB7.GPLD)
+
+dsdt.asl   1090:    Name (PCKG, Package (0x01)
+Remark   2173 -             ^ Creation of named objects within a method is highly inefficient, use globals or method local variables instead (\_SB.PCI0.EHC2.HUB7.GPLD)
+
+dsdt.asl   1592:   Name (ECMD, ResourceTemplate()
+Remark   2173 -            ^ Creation of named objects within a method is highly inefficient, use globals or method local variables instead (\_SB.PCI0.LPCB.EC._CRS)
+
+dsdt.asl   1908:  Name (SERN, Buffer (0x06) { "     " })
+Remark   2173 -           ^ Creation of named objects within a method is highly inefficient, use globals or method local variables instead (\_SB.PCI0.LPCB.EC.BINF)
+
+dsdt.asl   1919:  Name (TYPE, Buffer() { 0, 0, 0, 0, 0 })
+Remark   2173 -           ^ Creation of named objects within a method is highly inefficient, use globals or method local variables instead (\_SB.PCI0.LPCB.EC.BINF)
+
+dsdt.asl   2178:   PowerResource (FPwR, 0, 0)
+Remark   2182 -                     ^ At least one lower case letter found in NameSeg, ASL is case insensitive - converting to upper case (FPWR)
+
+dsdt.asl   2197:    Name (_PR0, Package () { FPwR })
+Remark   2182 -                                ^ At least one lower case letter found in NameSeg, ASL is case insensitive - converting to upper case (FPWR)
+
+dsdt.asl   2407:  Method (MLCG, 1)
+Remark   2146 -             ^ Method Argument is never used (Arg0)
+
+dsdt.asl   2443:  Method (WAKE, 1)
+Remark   2146 -             ^ Method Argument is never used (Arg0)
+
+dsdt.asl   2762:  If (LEqual (Arg0, ToUUID("7c9512a9-1705-4cb4-af7d-506a2423ab71")))
+Remark   2184 -                                            Unknown UUID string ^
+
+ASL Input:     dsdt.asl -   49968 bytes   1468 keywords   2994 source lines
+AML Output:    dsdt.aml -   14425 bytes    910 opcodes     558 named objects
+
+Compilation successful. 0 Errors, 0 Warnings, 10 Remarks, 461 Optimizations, 11 Constants Folded
+    IASL       3150 2158 warning types were ignored!
+    IASL       build/dsdt.aml disassembled correctly.
+    CREATE     build/mainboard/lenovo/x220/cbfs-file.jC3969.out (from src/mainboard/lenovo/x220/cmos.default)
+    MICROCODE  cpu_microcode_blob.bin
+3rdparty/intel-microcode/intel-ucode/06-2a-07 3rdparty/intel-microcode/intel-ucode/06-3a-09
+    OPTION     cmos_layout.bin
+    CC         postcar/mainboard/lenovo/x220/static.o
+    CC         postcar/acpi/acpi_pm.o
+    CC         postcar/arch/x86/boot.o
+    CC         postcar/arch/x86/cf9_reset.o
+    CC         postcar/arch/x86/cpu_common.o
+    CC         postcar/arch/x86/exit_car.o
+    CC         postcar/arch/x86/gdt_init.o
+    CC         postcar/arch/x86/memcpy.o
+    CP         postcar/arch/x86/memlayout.ld
+    CC         postcar/arch/x86/memmove.o
+    CC         postcar/arch/x86/memset.o
+    CC         postcar/arch/x86/mmap_boot.o
+    CC         postcar/arch/x86/post.o
+    CC         postcar/arch/x86/postcar.o
+    CC         postcar/commonlib/bsd/cbfs_mcache.o
+    CC         postcar/commonlib/bsd/cbfs_private.o
+    CC         postcar/commonlib/bsd/lz4_wrapper.o
+    CC         postcar/commonlib/cbfs.o
+    CC         postcar/commonlib/iobuf.o
+    CC         postcar/commonlib/mem_pool.o
+    CC         postcar/commonlib/region.o
+    CC         postcar/console/console.o
+    CC         postcar/console/die.o
+    CC         postcar/console/init.o
+    CC         postcar/console/post.o
+    CC         postcar/console/printk.o
+    CC         postcar/console/vsprintf.o
+    CC         postcar/console/vtxprintf.o
+    CC         postcar/cpu/intel/car/non-evict/exit_car.o
+    CC         postcar/cpu/intel/common/fsb.o
+    CC         postcar/cpu/x86/lapic/boot_cpu.o
+    CC         postcar/cpu/x86/lapic/lapic.o
+    CC         postcar/cpu/x86/mtrr/debug.o
+    CC         postcar/cpu/x86/pae/pgtbl.o
+    CC         postcar/cpu/x86/smm/tseg_region.o
+    CC         postcar/cpu/x86/tsc/delay_tsc.o
+    CC         postcar/device/device_const.o
+    CC         postcar/device/pci_early.o
+    CC         postcar/device/pci_ops.o
+    CC         postcar/drivers/pc80/pc/i8254.o
+    CC         postcar/drivers/pc80/rtc/mc146818rtc.o
+    CC         postcar/drivers/pc80/rtc/mc146818rtc_boot.o
+    CC         postcar/drivers/pc80/rtc/option.o
+    CC         postcar/drivers/pc80/tpm/tis.o
+    CC         postcar/drivers/spi/adesto.o
+    CC         postcar/drivers/spi/amic.o
+    CC         postcar/drivers/spi/atmel.o
+    CC         postcar/drivers/spi/bitbang.o
+    CC         postcar/drivers/spi/eon.o
+    CC         postcar/drivers/spi/gigadevice.o
+    CC         postcar/drivers/spi/macronix.o
+    CC         postcar/drivers/spi/spansion.o
+    CC         postcar/drivers/spi/spi-generic.o
+    CC         postcar/drivers/spi/spi_flash.o
+    CC         postcar/drivers/spi/sst.o
+    CC         postcar/drivers/spi/stmicro.o
+    CC         postcar/drivers/spi/winbond.o
+    CC         postcar/ec/lenovo/h8/sense.o
+    CC         postcar/lib/boot_device.o
+    CC         postcar/lib/bootmode.o
+    CC         postcar/lib/cbfs.o
+    CC         postcar/lib/cbmem_common.o
+    CC         postcar/lib/cbmem_console.o
+    CC         postcar/lib/crc_byte.o
+    CC         postcar/lib/delay.o
+    CC         postcar/lib/ext_stage_cache.o
+    CC         postcar/lib/fmap.o
+    CC         postcar/lib/gcc.o
+    CC         postcar/lib/halt.o
+    CC         postcar/lib/hexdump.o
+    CC         postcar/lib/imd.o
+    CC         postcar/lib/imd_cbmem.o
+    CC         postcar/lib/libgcc.o
+    CC         postcar/lib/list.o
+    CC         postcar/lib/lzma.o
+    CC         postcar/lib/lzmadecode.o
+    CC         postcar/lib/memchr.o
+    CC         postcar/lib/memcmp.o
+    CC         postcar/lib/prog_loaders.o
+    CC         postcar/lib/prog_ops.o
+    CP         postcar/lib/program.ld
+    CC         postcar/lib/reset.o
+    CC         postcar/lib/rmodule.o
+    CC         postcar/lib/romstage_handoff.o
+    CC         postcar/lib/string.o
+    CC         postcar/lib/version.o
+    CC         postcar/northbridge/intel/sandybridge/memmap.o
+    CC         postcar/security/memory/memory.o
+    CC         postcar/security/tpm/tspi/tspi.o
+    CC         postcar/security/tpm/tss/tcg-1.2/tss.o
+    CC         postcar/southbridge/intel/common/me.o
+    CC         postcar/southbridge/intel/common/pmbase.o
+    CC         postcar/southbridge/intel/common/reset.o
+    CC         postcar/southbridge/intel/common/rtc.o
+    CC         postcar/southbridge/intel/common/spi.o
+    LINK       cbfs/fallback/postcar.debug
+#
+# configuration written to /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/coreinfo/.config
+#
+*** Default configuration is based on '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/coreinfo/../libpayload/configs/defconfig-tinycurses'
+#
+# configuration written to /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/coreinfo/.lp.config
+#
+    LPGCC      cpuinfo_module.o
+    LPAS       cpuid.S.o
+    LPGCC      pci_module.o
+    LPGCC      coreboot_module.o
+    LPGCC      nvram_module.o
+    LPGCC      bootlog_module.o
+    LPGCC      ramdump_module.o
+    LPGCC      multiboot_module.o
+    LPGCC      cbfs_module.o
+    LPGCC      timestamps_module.o
+    LPGCC      coreinfo.o
+    CC         libpci/libpci.libpci.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/coreinfo/libpayload/libpci.a
+    CC         arch/x86/main.libc.o
+    CC         arch/x86/sysinfo.libc.o
+    CC         arch/x86/timer.libc.o
+    CC         arch/x86/coreboot.libc.o
+    CC         arch/x86/util.libc.o
+    CC         arch/x86/exec.libc.o
+    CC         arch/x86/virtual.libc.o
+    CC         arch/x86/selfboot.libc.o
+    CC         arch/x86/exception_asm.libc.o
+    CC         arch/x86/exception.libc.o
+    CC         arch/x86/delay.libc.o
+    CC         crypto/sha1.libc.o
+    CC         libc/malloc.libc.o
+    CC         libc/printf.libc.o
+    CC         libc/console.libc.o
+    CC         libc/string.libc.o
+    CC         libc/memory.libc.o
+    CC         libc/ctype.libc.o
+    CC         libc/ipchecksum.libc.o
+    CC         libc/lib.libc.o
+    CC         libc/libgcc.libc.o
+    CC         libc/rand.libc.o
+    CC         libc/time.libc.o
+    CC         libc/exec.libc.o
+    CC         libc/readline.libc.o
+    CC         libc/getopt_long.libc.o
+    CC         libc/sysinfo.libc.o
+    CC         libc/args.libc.o
+    CC         libc/strlcpy.libc.o
+    CC         libc/qsort.libc.o
+    CC         libc/hexdump.libc.o
+    CC         libc/die.libc.o
+    CC         libc/coreboot.libc.o
+    CC         libc/fmap.libc.o
+    CC         libc/fpmath.libc.o
+    CC         drivers/pci.libc.o
+    CC         drivers/speaker.libc.o
+    CC         drivers/serial/8250.libc.o
+    CC         drivers/serial/serial.libc.o
+    CC         drivers/i8042/keyboard.libc.o
+    CC         drivers/i8042/mouse.libc.o
+    CC         drivers/i8042/i8042.libc.o
+    CC         drivers/cbmem_console.libc.o
+    CC         drivers/mouse_cursor.libc.o
+    CC         drivers/nvram.libc.o
+    CC         drivers/options.libc.o
+    CC         drivers/timer/rdtsc.libc.o
+    CC         drivers/video/video.libc.o
+    CC         drivers/video/vga.libc.o
+    CC         drivers/video/corebootfb.libc.o
+    CC         drivers/video/font8x16.libc.o
+    CC         drivers/video/font.libc.o
+    CC         drivers/video/graphics.libc.o
+    CC         drivers/storage/storage.libc.o
+    CC         drivers/storage/ahci.libc.o
+    CC         drivers/storage/ahci_common.libc.o
+    CC         drivers/storage/nvme.libc.o
+    CC         drivers/storage/ata.libc.o
+    CC         drivers/storage/ahci_ata.libc.o
+    CC         drivers/storage/atapi.libc.o
+    CC         drivers/storage/ahci_atapi.libc.o
+    CC         drivers/usb/usbinit.libc.o
+    CC         drivers/usb/usb.libc.o
+    CC         drivers/usb/usb_dev.libc.o
+    CC         drivers/usb/quirks.libc.o
+    CC         drivers/usb/generic_hub.libc.o
+    CC         drivers/usb/usbhub.libc.o
+    CC         drivers/usb/uhci.libc.o
+    CC         drivers/usb/uhci_rh.libc.o
+    CC         drivers/usb/ohci.libc.o
+    CC         drivers/usb/ohci_rh.libc.o
+    CC         drivers/usb/ehci.libc.o
+    CC         drivers/usb/ehci_rh.libc.o
+    CC         drivers/usb/xhci.libc.o
+    CC         drivers/usb/xhci_debug.libc.o
+    CC         drivers/usb/xhci_devconf.libc.o
+    CC         drivers/usb/xhci_events.libc.o
+    CC         drivers/usb/xhci_commands.libc.o
+    CC         drivers/usb/xhci_rh.libc.o
+    CC         drivers/usb/usbhid.libc.o
+    CC         drivers/usb/usbmsc.libc.o
+    CC         drivers/hid.libc.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/coreinfo/libpayload/libc.a
+    CC         curses/keyboard.libcurses.o
+    CC         curses/tinycurses.libcurses.o
+    CC         curses/colors.libcurses.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/coreinfo/libpayload/libcurses.a
+    CC         arch/x86/rom_media.libcbfs.o
+    CC         libcbfs/cbfs.libcbfs.o
+    CC         libcbfs/ram_media.libcbfs.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/coreinfo/libpayload/libcbfs.a
+    CC         liblzma/lzma.liblzma.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/coreinfo/libpayload/liblzma.a
+    CC         liblz4/lz4_wrapper.liblz4.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/coreinfo/libpayload/liblz4.a
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/coreinfo/libpayload/libpayload.a
+    CC         arch/x86/head.head.o.o
+    CP         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/coreinfo/libpayload/head.o
+    LPGCC      coreinfo.bin
+    DEBUG      coreinfo.debug
+    STRIP      coreinfo.elf
+*** Default configuration is based on '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/../libpayload/configs/defconfig'
+#
+# configuration written to /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/.lp.config
+#
+    LPGCC      nvramcui.o
+    CC         libpci/libpci.libpci.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/libpayload/libpci.a
+    CC         arch/x86/main.libc.o
+    CC         arch/x86/sysinfo.libc.o
+    CC         arch/x86/timer.libc.o
+    CC         arch/x86/coreboot.libc.o
+    CC         arch/x86/util.libc.o
+    CC         arch/x86/exec.libc.o
+    CC         arch/x86/virtual.libc.o
+    CC         arch/x86/selfboot.libc.o
+    CC         arch/x86/exception_asm.libc.o
+    CC         arch/x86/exception.libc.o
+    CC         arch/x86/delay.libc.o
+    CC         crypto/sha1.libc.o
+    CC         libc/malloc.libc.o
+    CC         libc/printf.libc.o
+    CC         libc/console.libc.o
+    CC         libc/string.libc.o
+    CC         libc/memory.libc.o
+    CC         libc/ctype.libc.o
+    CC         libc/ipchecksum.libc.o
+    CC         libc/lib.libc.o
+    CC         libc/libgcc.libc.o
+    CC         libc/rand.libc.o
+    CC         libc/time.libc.o
+    CC         libc/exec.libc.o
+    CC         libc/readline.libc.o
+    CC         libc/getopt_long.libc.o
+    CC         libc/sysinfo.libc.o
+    CC         libc/args.libc.o
+    CC         libc/strlcpy.libc.o
+    CC         libc/qsort.libc.o
+    CC         libc/hexdump.libc.o
+    CC         libc/die.libc.o
+    CC         libc/coreboot.libc.o
+    CC         libc/fmap.libc.o
+    CC         libc/fpmath.libc.o
+    CC         drivers/pci.libc.o
+    CC         drivers/speaker.libc.o
+    CC         drivers/serial/8250.libc.o
+    CC         drivers/serial/serial.libc.o
+    CC         drivers/i8042/keyboard.libc.o
+    CC         drivers/i8042/mouse.libc.o
+    CC         drivers/i8042/i8042.libc.o
+    CC         drivers/cbmem_console.libc.o
+    CC         drivers/mouse_cursor.libc.o
+    CC         drivers/nvram.libc.o
+    CC         drivers/options.libc.o
+    CC         drivers/timer/rdtsc.libc.o
+    CC         drivers/video/video.libc.o
+    CC         drivers/video/vga.libc.o
+    CC         drivers/video/corebootfb.libc.o
+    CC         drivers/video/font8x16.libc.o
+    CC         drivers/video/font.libc.o
+    CC         drivers/video/graphics.libc.o
+    CC         drivers/storage/storage.libc.o
+    CC         drivers/storage/ahci.libc.o
+    CC         drivers/storage/ahci_common.libc.o
+    CC         drivers/storage/nvme.libc.o
+    CC         drivers/storage/ata.libc.o
+    CC         drivers/storage/ahci_ata.libc.o
+    CC         drivers/storage/atapi.libc.o
+    CC         drivers/storage/ahci_atapi.libc.o
+    CC         drivers/usb/usbinit.libc.o
+    CC         drivers/usb/usb.libc.o
+    CC         drivers/usb/usb_dev.libc.o
+    CC         drivers/usb/quirks.libc.o
+    CC         drivers/usb/generic_hub.libc.o
+    CC         drivers/usb/usbhub.libc.o
+    CC         drivers/usb/uhci.libc.o
+    CC         drivers/usb/uhci_rh.libc.o
+    CC         drivers/usb/ohci.libc.o
+    CC         drivers/usb/ohci_rh.libc.o
+    CC         drivers/usb/ehci.libc.o
+    CC         drivers/usb/ehci_rh.libc.o
+    CC         drivers/usb/xhci.libc.o
+    CC         drivers/usb/xhci_debug.libc.o
+    CC         drivers/usb/xhci_devconf.libc.o
+    CC         drivers/usb/xhci_events.libc.o
+    CC         drivers/usb/xhci_commands.libc.o
+    CC         drivers/usb/xhci_rh.libc.o
+    CC         drivers/usb/usbhid.libc.o
+    CC         drivers/usb/usbmsc.libc.o
+    CC         drivers/hid.libc.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/libpayload/libc.a
+    CC         curses/pdcurses-backend/pdcdisp.libcurses.o
+    CC         curses/pdcurses-backend/pdcgetsc.libcurses.o
+    CC         curses/pdcurses-backend/pdckbd.libcurses.o
+    CC         curses/pdcurses-backend/pdcscrn.libcurses.o
+    CC         curses/pdcurses-backend/pdcsetsc.libcurses.o
+    CC         curses/pdcurses-backend/pdcutil.libcurses.o
+    CC         curses/PDCurses/pdcurses/addch.libcurses.o
+    CC         curses/PDCurses/pdcurses/move.libcurses.o
+    CC         curses/PDCurses/pdcurses/overlay.libcurses.o
+    CC         curses/PDCurses/pdcurses/refresh.libcurses.o
+    CC         curses/PDCurses/pdcurses/terminfo.libcurses.o
+    CC         curses/PDCurses/pdcurses/window.libcurses.o
+    CC         curses/PDCurses/pdcurses/util.libcurses.o
+    CC         curses/PDCurses/pdcurses/inopts.libcurses.o
+    CC         curses/PDCurses/pdcurses/addstr.libcurses.o
+    CC         curses/PDCurses/pdcurses/keyname.libcurses.o
+    CC         curses/PDCurses/pdcurses/instr.libcurses.o
+    CC         curses/PDCurses/pdcurses/clear.libcurses.o
+    CC         curses/PDCurses/pdcurses/addchstr.libcurses.o
+    CC         curses/PDCurses/pdcurses/kernel.libcurses.o
+    CC         curses/PDCurses/pdcurses/pad.libcurses.o
+    CC         curses/PDCurses/pdcurses/insstr.libcurses.o
+    CC         curses/PDCurses/pdcurses/border.libcurses.o
+    CC         curses/PDCurses/pdcurses/getyx.libcurses.o
+    CC         curses/PDCurses/pdcurses/getstr.libcurses.o
+    CC         curses/PDCurses/pdcurses/getch.libcurses.o
+    CC         curses/PDCurses/pdcurses/termattr.libcurses.o
+    CC         curses/PDCurses/pdcurses/outopts.libcurses.o
+    CC         curses/PDCurses/pdcurses/color.libcurses.o
+    CC         curses/PDCurses/pdcurses/deleteln.libcurses.o
+    CC         curses/PDCurses/pdcurses/initscr.libcurses.o
+    CC         curses/PDCurses/pdcurses/slk.libcurses.o
+    CC         curses/PDCurses/pdcurses/delch.libcurses.o
+    CC         curses/PDCurses/pdcurses/touch.libcurses.o
+    CC         curses/PDCurses/pdcurses/mouse.libcurses.o
+    CC         curses/PDCurses/pdcurses/scanw.libcurses.o
+    CC         curses/PDCurses/pdcurses/scroll.libcurses.o
+    CC         curses/PDCurses/pdcurses/printw.libcurses.o
+    CC         curses/PDCurses/pdcurses/bkgd.libcurses.o
+    CC         curses/PDCurses/pdcurses/inch.libcurses.o
+    CC         curses/PDCurses/pdcurses/attr.libcurses.o
+    CC         curses/PDCurses/pdcurses/insch.libcurses.o
+    CC         curses/PDCurses/pdcurses/inchstr.libcurses.o
+    CC         curses/PDCurses/pdcurses/beep.libcurses.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/libpayload/libcurses.a
+    CC         curses/menu/m_req_name.libmenu.o
+    CC         curses/menu/m_item_nam.libmenu.o
+    CC         curses/menu/m_pad.libmenu.o
+    CC         curses/menu/m_cursor.libmenu.o
+    CC         curses/menu/m_item_new.libmenu.o
+    CC         curses/menu/m_attribs.libmenu.o
+    CC         curses/menu/m_item_opt.libmenu.o
+    CC         curses/menu/m_format.libmenu.o
+    CC         curses/menu/m_post.libmenu.o
+    CC         curses/menu/m_userptr.libmenu.o
+    CC         curses/menu/m_item_cur.libmenu.o
+    CC         curses/menu/m_driver.libmenu.o
+    CC         curses/menu/m_sub.libmenu.o
+    CC         curses/menu/m_win.libmenu.o
+    CC         curses/menu/m_global.libmenu.o
+    CC         curses/menu/m_item_vis.libmenu.o
+    CC         curses/menu/m_new.libmenu.o
+    CC         curses/menu/m_scale.libmenu.o
+    CC         curses/menu/m_spacing.libmenu.o
+    CC         curses/menu/m_opts.libmenu.o
+    CC         curses/menu/m_pattern.libmenu.o
+    CC         curses/menu/m_item_val.libmenu.o
+    CC         curses/menu/m_hook.libmenu.o
+    CC         curses/menu/m_item_use.libmenu.o
+    CC         curses/menu/m_items.libmenu.o
+    CC         curses/menu/m_item_top.libmenu.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/libpayload/libmenu.a
+    CC         curses/form/frm_page.libform.o
+    CC         curses/form/frm_opts.libform.o
+    CC         curses/form/frm_def.libform.o
+    CC         curses/form/frm_req_name.libform.o
+    CC         curses/form/fty_alpha.libform.o
+    CC         curses/form/frm_driver.libform.o
+    CC         curses/form/fld_user.libform.o
+    CC         curses/form/frm_win.libform.o
+    CC         curses/form/fld_newftyp.libform.o
+    CC         curses/form/fld_stat.libform.o
+    CC         curses/form/fld_pad.libform.o
+    CC         curses/form/fld_current.libform.o
+    CC         curses/form/frm_post.libform.o
+    CC         curses/form/fty_generic.libform.o
+    CC         curses/form/fld_page.libform.o
+    CC         curses/form/frm_hook.libform.o
+    CC         curses/form/frm_scale.libform.o
+    CC         curses/form/fty_int.libform.o
+    CC         curses/form/fty_alnum.libform.o
+    CC         curses/form/frm_cursor.libform.o
+    CC         curses/form/fld_link.libform.o
+    CC         curses/form/fld_arg.libform.o
+    CC         curses/form/fld_move.libform.o
+    CC         curses/form/fld_def.libform.o
+    CC         curses/form/fld_type.libform.o
+    CC         curses/form/fld_max.libform.o
+    CC         curses/form/fld_ftlink.libform.o
+    CC         curses/form/fld_ftchoice.libform.o
+    CC         curses/form/fld_info.libform.o
+    CC         curses/form/frm_user.libform.o
+    CC         curses/form/frm_sub.libform.o
+    CC         curses/form/fty_enum.libform.o
+    CC         curses/form/frm_data.libform.o
+    CC         curses/form/fld_opts.libform.o
+    CC         curses/form/fld_attr.libform.o
+    CC         curses/form/fld_dup.libform.o
+    CC         curses/form/fld_just.libform.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/libpayload/libform.a
+    CC         curses/PDCurses/pdcurses/panel.libpanel.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/libpayload/libpanel.a
+    CC         arch/x86/rom_media.libcbfs.o
+    CC         libcbfs/cbfs.libcbfs.o
+    CC         libcbfs/ram_media.libcbfs.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/libpayload/libcbfs.a
+    CC         liblzma/lzma.liblzma.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/libpayload/liblzma.a
+    CC         liblz4/lz4_wrapper.liblz4.o
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/libpayload/liblz4.a
+    AR         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/libpayload/libpayload.a
+    CC         arch/x86/head.head.o.o
+    CP         /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/nvramcui/libpayload/head.o
+    LPGCC      nvramcui.bin
+    DEBUG      nvramcui.debug
+    STRIP      nvramcui.elf
+    Cloning SeaBIOS from Git
+Cloning into 'seabios'...
+remote: Total 16281 (delta 0), reused 16281 (delta 0)
+Receiving objects: 100% (16281/16281), 3.53 MiB | 3.51 MiB/s, done.
+Resolving deltas: 100% (12939/12939), done.
+    Fetching new commits from the SeaBIOS git repo
+    Checking out SeaBIOS revision origin/master
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+branch 'coreboot' set up to track 'origin/master'.
+Switched to a new branch 'coreboot'
+    CONFIG     SeaBIOS origin/master
+In file included from scripts/kconfig/zconf.tab.c:2534:
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/SeaBIOS/seabios/scripts/kconfig/confdata.c: In function 'conf_write':
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/SeaBIOS/seabios/scripts/kconfig/confdata.c:774:20: warning: '.tmpconfig.' directive writing 11 bytes into a region of size between 1 and 4097 [-Wformat-overflow=]
+  774 |   sprintf(tmpname, "%s.tmpconfig.%d", dirname, (int)getpid());
+      |                    ^~~~~~~~~~~~~~~~~
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/SeaBIOS/seabios/scripts/kconfig/confdata.c:774:3: note: 'sprintf' output between 13 and 4119 bytes into a destination of size 4097
+  774 |   sprintf(tmpname, "%s.tmpconfig.%d", dirname, (int)getpid());
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+# configuration written to /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/SeaBIOS/seabios/.config
+#
+    MAKE       SeaBIOS origin/master
+  Build Kconfig config file
+  Compile checking out/src/misc.o
+  Compile checking out/src/stacks.o
+  Compile checking out/src/output.o
+  Compile checking out/src/string.o
+  Compile checking out/src/block.o
+  Compile checking out/src/cdrom.o
+  Compile checking out/src/disk.o
+  Compile checking out/src/mouse.o
+  Compile checking out/src/kbd.o
+  Compile checking out/src/system.o
+  Compile checking out/src/serial.o
+  Compile checking out/src/sercon.o
+  Compile checking out/src/clock.o
+  Compile checking out/src/resume.o
+  Compile checking out/src/pnpbios.o
+  Compile checking out/src/vgahooks.o
+  Compile checking out/src/pcibios.o
+  Compile checking out/src/apm.o
+  Compile checking out/src/cp437.o
+  Compile checking out/src/hw/pci.o
+  Compile checking out/src/hw/timer.o
+  Compile checking out/src/hw/rtc.o
+  Compile checking out/src/hw/dma.o
+  Compile checking out/src/hw/pic.o
+  Compile checking out/src/hw/ps2port.o
+  Compile checking out/src/hw/serialio.o
+  Compile checking out/src/hw/usb.o
+  Compile checking out/src/hw/usb-uhci.o
+  Compile checking out/src/hw/usb-ohci.o
+  Compile checking out/src/hw/usb-ehci.o
+  Compile checking out/src/hw/usb-hid.o
+  Compile checking out/src/hw/usb-msc.o
+  Compile checking out/src/hw/usb-uas.o
+  Compile checking out/src/hw/blockcmd.o
+  Compile checking out/src/hw/floppy.o
+  Compile checking out/src/hw/ata.o
+  Compile checking out/src/hw/ramdisk.o
+  Compile checking out/src/hw/lsi-scsi.o
+  Compile checking out/src/hw/esp-scsi.o
+  Compile checking out/src/hw/megasas.o
+  Compile checking out/src/hw/mpt-scsi.o
+  Compile checking out/src/post.o
+  Compile checking out/src/e820map.o
+  Compile checking out/src/malloc.o
+  Compile checking out/src/romfile.o
+  Compile checking out/src/x86.o
+  Compile checking out/src/optionroms.o
+  Compile checking out/src/pmm.o
+  Compile checking out/src/font.o
+  Compile checking out/src/boot.o
+  Compile checking out/src/bootsplash.o
+  Compile checking out/src/jpeg.o
+  Compile checking out/src/bmp.o
+  Compile checking out/src/tcgbios.o
+  Compile checking out/src/sha1.o
+  Compile checking out/src/hw/pcidevice.o
+  Compile checking out/src/hw/ahci.o
+  Compile checking out/src/hw/pvscsi.o
+  Compile checking out/src/hw/usb-xhci.o
+  Compile checking out/src/hw/usb-hub.o
+  Compile checking out/src/hw/sdcard.o
+  Compile checking out/src/fw/coreboot.o
+  Compile checking out/src/fw/lzmadecode.o
+  Compile checking out/src/fw/multiboot.o
+  Compile checking out/src/fw/csm.o
+  Compile checking out/src/fw/biostables.o
+  Compile checking out/src/fw/paravirt.o
+  Compile checking out/src/fw/shadow.o
+  Compile checking out/src/fw/pciinit.o
+  Compile checking out/src/fw/smm.o
+  Compile checking out/src/fw/smp.o
+  Compile checking out/src/fw/mtrr.o
+  Compile checking out/src/fw/xen.o
+  Compile checking out/src/fw/acpi.o
+  Compile checking out/src/fw/mptable.o
+  Compile checking out/src/fw/pirtable.o
+  Compile checking out/src/fw/smbios.o
+  Compile checking out/src/fw/romfile_loader.o
+  Compile checking out/src/fw/dsdt_parser.o
+  Compile checking out/src/hw/virtio-ring.o
+  Compile checking out/src/hw/virtio-pci.o
+  Compile checking out/src/hw/virtio-mmio.o
+  Compile checking out/src/hw/virtio-blk.o
+  Compile checking out/src/hw/virtio-scsi.o
+  Compile checking out/src/hw/tpm_drivers.o
+  Compile checking out/src/hw/nvme.o
+  Compile checking out/src/sha256.o
+  Compile checking out/src/sha512.o
+  Compiling whole program out/ccode32flat.o
+  Compiling whole program out/code32seg.o
+  Compiling whole program out/ccode16.o
+  Compiling to assembler out/src/asm-offsets.s
+  Generating offset file out/asm-offsets.h
+  Compiling (16bit) out/romlayout.o
+  Building ld scripts
+Version: rel-1.15.0-38-gdc776a2
+Fixed space: 0xe05b-0x10000  total: 8101  slack: 12  Percent slack: 0.1%
+16bit size:           35776
+32bit segmented size: 1725
+32bit flat size:      36387
+32bit flat init size: 54432
+Lowmem size:          2240
+f-segment var size:   1408
+  Linking out/rom16.o
+  Stripping out/rom16.noexec.o
+  Linking out/rom32seg.o
+  Stripping out/rom32seg.noexec.o
+  Linking out/rom.o
+  Prepping out/bios.bin.prep
+Total size: 135712  Fixed: 75296  Free: 126432 (used 51.8% of 256KiB rom)
+  Creating out/bios.bin.elf
+Downloading and verifying TINT tarball ...
+ * tint_0.05.tar.xz (downloading from https://mirror.fsf.org/trisquel/pool/main/t/tint/tint_0.05.tar.xz)... 100%... hash verified (859008216930a4584e622d0df41fd75c44d2b47f)
+Downloaded TINT tarball ... ok
+Unpacking and patching TINT...
+ * tint_0.05.tar.xz
+   o tint-0.05_libpayload.patch
+Unpacked and patched TINT... ok
+Building TINT ...
+Building libpayload @ /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/libpayload.
+*** Default configuration is based on 'configs/defconfig-tinycurses'
+#
+# configuration written to .config
+#
+    CC         libpci/libpci.libpci.o
+    AR         build/libpci.a
+    CC         arch/x86/main.libc.o
+    CC         arch/x86/sysinfo.libc.o
+    CC         arch/x86/timer.libc.o
+    CC         arch/x86/coreboot.libc.o
+    CC         arch/x86/util.libc.o
+    CC         arch/x86/exec.libc.o
+    CC         arch/x86/virtual.libc.o
+    CC         arch/x86/selfboot.libc.o
+    CC         arch/x86/exception_asm.libc.o
+    CC         arch/x86/exception.libc.o
+    CC         arch/x86/delay.libc.o
+    CC         crypto/sha1.libc.o
+    CC         libc/malloc.libc.o
+    CC         libc/printf.libc.o
+    CC         libc/console.libc.o
+    CC         libc/string.libc.o
+    CC         libc/memory.libc.o
+    CC         libc/ctype.libc.o
+    CC         libc/ipchecksum.libc.o
+    CC         libc/lib.libc.o
+    CC         libc/libgcc.libc.o
+    CC         libc/rand.libc.o
+    CC         libc/time.libc.o
+    CC         libc/exec.libc.o
+    CC         libc/readline.libc.o
+    CC         libc/getopt_long.libc.o
+    CC         libc/sysinfo.libc.o
+    CC         libc/args.libc.o
+    CC         libc/strlcpy.libc.o
+    CC         libc/qsort.libc.o
+    CC         libc/hexdump.libc.o
+    CC         libc/die.libc.o
+    CC         libc/coreboot.libc.o
+    CC         libc/fmap.libc.o
+    CC         libc/fpmath.libc.o
+    CC         drivers/pci.libc.o
+    CC         drivers/speaker.libc.o
+    CC         drivers/serial/8250.libc.o
+    CC         drivers/serial/serial.libc.o
+    CC         drivers/i8042/keyboard.libc.o
+    CC         drivers/i8042/mouse.libc.o
+    CC         drivers/i8042/i8042.libc.o
+    CC         drivers/cbmem_console.libc.o
+    CC         drivers/mouse_cursor.libc.o
+    CC         drivers/nvram.libc.o
+    CC         drivers/options.libc.o
+    CC         drivers/timer/rdtsc.libc.o
+    CC         drivers/video/video.libc.o
+    CC         drivers/video/vga.libc.o
+    CC         drivers/video/corebootfb.libc.o
+    CC         drivers/video/font8x16.libc.o
+    CC         drivers/video/font.libc.o
+    CC         drivers/video/graphics.libc.o
+    CC         drivers/storage/storage.libc.o
+    CC         drivers/storage/ahci.libc.o
+    CC         drivers/storage/ahci_common.libc.o
+    CC         drivers/storage/nvme.libc.o
+    CC         drivers/storage/ata.libc.o
+    CC         drivers/storage/ahci_ata.libc.o
+    CC         drivers/storage/atapi.libc.o
+    CC         drivers/storage/ahci_atapi.libc.o
+    CC         drivers/usb/usbinit.libc.o
+    CC         drivers/usb/usb.libc.o
+    CC         drivers/usb/usb_dev.libc.o
+    CC         drivers/usb/quirks.libc.o
+    CC         drivers/usb/generic_hub.libc.o
+    CC         drivers/usb/usbhub.libc.o
+    CC         drivers/usb/uhci.libc.o
+    CC         drivers/usb/uhci_rh.libc.o
+    CC         drivers/usb/ohci.libc.o
+    CC         drivers/usb/ohci_rh.libc.o
+    CC         drivers/usb/ehci.libc.o
+    CC         drivers/usb/ehci_rh.libc.o
+    CC         drivers/usb/xhci.libc.o
+    CC         drivers/usb/xhci_debug.libc.o
+    CC         drivers/usb/xhci_devconf.libc.o
+    CC         drivers/usb/xhci_events.libc.o
+    CC         drivers/usb/xhci_commands.libc.o
+    CC         drivers/usb/xhci_rh.libc.o
+    CC         drivers/usb/usbhid.libc.o
+    CC         drivers/usb/usbmsc.libc.o
+    CC         drivers/hid.libc.o
+    AR         build/libc.a
+    CC         curses/keyboard.libcurses.o
+    CC         curses/tinycurses.libcurses.o
+    CC         curses/colors.libcurses.o
+    AR         build/libcurses.a
+    CC         arch/x86/rom_media.libcbfs.o
+    CC         libcbfs/cbfs.libcbfs.o
+    CC         libcbfs/ram_media.libcbfs.o
+    AR         build/libcbfs.a
+    CC         liblzma/lzma.liblzma.o
+    AR         build/liblzma.a
+    CC         liblz4/lz4_wrapper.liblz4.o
+    AR         build/liblz4.a
+    AR         build/libpayload.a
+    CC         arch/x86/head.head.o.o
+    CP         build/head.o
+    INSTALL    /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/tint/tint/build/libpayload/lib
+    INSTALL    /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/tint/tint/build/libpayload/include
+    INSTALL    /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/tint/tint/build/libpayload/bin
+  LPCC      tint.o
+In file included from config.h:32,
+                 from tint.c:41:
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/tint/tint/build/libpayload/bin/../include/libpayload.h:457:19: warning: conflicting types for built-in function 'log2'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  457 | static inline int log2(u32 x) { return (int)sizeof(x) * 8 - clz(x) - 1; }
+      |                   ^~~~
+In file included from config.h:32,
+                 from tint.c:41:
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/tint/tint/build/libpayload/bin/../include/libpayload.h:67:1: note: 'log2' is declared in header '<math.h>'
+   66 | #include <archive.h>
+  +++ |+#include <math.h>
+   67 |
+tint.c:310:19: warning: 'scoretitle' defined but not used [-Wunused-const-variable=]
+  310 | static const char scoretitle[] = "\n\t   TINT HIGH SCORES\n\n\tRank   Score        Name\n\n";
+      |                   ^~~~~~~~~~
+tint.c: In function 'main':
+tint.c:290:33: warning: '%d' directive output may be truncated writing between 1 and 11 bytes into a region of size 6 [-Wformat-truncation=]
+  290 |    snprintf (tmp,MAXDIGITS + 1,"%d",GETSCORE (engine->score) / sum);
+      |                                 ^~
+tint.c:290:32: note: directive argument in the range [-1073741824, 1073741824]
+  290 |    snprintf (tmp,MAXDIGITS + 1,"%d",GETSCORE (engine->score) / sum);
+      |                                ^~~~
+tint.c:290:4: note: 'snprintf' output between 2 and 12 bytes into a destination of size 6
+  290 |    snprintf (tmp,MAXDIGITS + 1,"%d",GETSCORE (engine->score) / sum);
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  LPCC      engine.o
+In file included from config.h:32,
+                 from engine.c:30:
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/tint/tint/build/libpayload/bin/../include/libpayload.h:457:19: warning: conflicting types for built-in function 'log2'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  457 | static inline int log2(u32 x) { return (int)sizeof(x) * 8 - clz(x) - 1; }
+      |                   ^~~~
+In file included from config.h:32,
+                 from engine.c:30:
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/tint/tint/build/libpayload/bin/../include/libpayload.h:67:1: note: 'log2' is declared in header '<math.h>'
+   66 | #include <archive.h>
+  +++ |+#include <math.h>
+   67 |
+  LPCC      io.o
+In file included from config.h:32,
+                 from io.c:30:
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/tint/tint/build/libpayload/bin/../include/libpayload.h:457:19: warning: conflicting types for built-in function 'log2'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  457 | static inline int log2(u32 x) { return (int)sizeof(x) * 8 - clz(x) - 1; }
+      |                   ^~~~
+In file included from config.h:32,
+                 from io.c:30:
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/tint/tint/build/libpayload/bin/../include/libpayload.h:67:1: note: 'log2' is declared in header '<math.h>'
+   66 | #include <archive.h>
+  +++ |+#include <math.h>
+   67 |
+  LPCC      utils.o
+In file included from config.h:32,
+                 from utils.c:30:
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/tint/tint/build/libpayload/bin/../include/libpayload.h:457:19: warning: conflicting types for built-in function 'log2'; expected 'double(double)' [-Wbuiltin-declaration-mismatch]
+  457 | static inline int log2(u32 x) { return (int)sizeof(x) * 8 - clz(x) - 1; }
+      |                   ^~~~
+In file included from config.h:32,
+                 from utils.c:30:
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/tint/tint/build/libpayload/bin/../include/libpayload.h:67:1: note: 'log2' is declared in header '<math.h>'
+   66 | #include <archive.h>
+  +++ |+#include <math.h>
+   67 |
+  LPCC      tint.elf
+TINT built ... ok
+    Cloning Memtest86+ from Git
+Cloning into '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/Memtest86Plus/memtest86plus'...
+remote: Counting objects: 1, done
+remote: Total 429 (delta 0), reused 429 (delta 0)
+Receiving objects: 100% (429/429), 518.76 KiB | 848.00 KiB/s, done.
+Resolving deltas: 100% (220/220), done.
+    Checking out Memtest86+ revision Stable (0bd34c22604660e4283316331f3e7bf8a3863753)
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Switched to a new branch 'coreboot'
+    MAKE       Memtest86+ Stable
+make[2]: Entering directory '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/Memtest86Plus/memtest86plus'
+rm -f *.o *.pre.s *.iso memtest.bin memtest memtest_shared \
+	memtest_shared.bin memtest.iso
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -E -traditional head.S -o head.pre.s
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-as  -32   -o head.pre.o head.pre.s
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -c -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline -fno-strict-aliasing reloc.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o main.o main.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -c -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding test.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o init.o init.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o lib.o lib.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o patn.o patn.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o screen_buffer.o screen_buffer.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o config.o config.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o cpuid.o cpuid.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o coreboot.o coreboot.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o pci.o pci.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o memsize.o memsize.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o spd.o spd.c
+spd.c: In function 'sb800_get_smb':
+spd.c:57:27: warning: variable 'result' set but not used [-Wunused-but-set-variable]
+   57 |         int lbyte, hbyte, result;
+      |                           ^~~~~~
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o error.o error.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o dmi.o dmi.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o controller.o controller.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o smp.o smp.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o vmem.o vmem.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -c -Wall -march=i486 -m32 -O3 -fomit-frame-pointer -fno-builtin -ffreestanding random.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -Wall -march=i486 -m32 -O0 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC  -fno-stack-protector -fgnu89-inline   -c -o multiboot.o multiboot.c
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-ld.bfd  -z max-page-size=0x1000 --warn-constructors --warn-common -static -T memtest_shared.lds \
+ -o memtest_shared head.pre.o reloc.o main.o test.o init.o lib.o patn.o screen_buffer.o config.o cpuid.o coreboot.o pci.o memsize.o spd.o error.o dmi.o controller.o smp.o vmem.o random.o multiboot.o && \
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-ld.bfd  -z max-page-size=0x1000 -shared -Bsymbolic -T memtest_shared.lds -o memtest_shared head.pre.o reloc.o main.o test.o init.o lib.o patn.o screen_buffer.o config.o cpuid.o coreboot.o pci.o memsize.o spd.o error.o dmi.o controller.o smp.o vmem.o random.o multiboot.o
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-objcopy -O binary memtest_shared memtest_shared.bin
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -E -traditional bootsect.S -o bootsect.pre.s
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-as  -32   -o bootsect.pre.o bootsect.pre.s
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-gcc -E -traditional setup.S -o setup.pre.s
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-as  -32   -o setup.pre.o setup.pre.s
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-ld.bfd  -z max-page-size=0x1000 -T memtest.bin.lds bootsect.pre.o setup.pre.o -b binary \
+memtest_shared.bin -o memtest.bin
+/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/util/crossgcc/xgcc/bin/i386-elf-ld.bfd  -z max-page-size=0x1000 -s -T memtest.lds -b binary memtest_shared.bin -o memtest
+make[2]: Leaving directory '/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/payloads/external/Memtest86Plus/memtest86plus'
+    HOSTCC     cbfstool/cbfstool.o
+    HOSTCC     cbfstool/cbfs_image.o
+    HOSTCC     cbfstool/cbfs-mkstage.o
+    HOSTCC     cbfstool/cbfs-mkpayload.o
+    HOSTCC     cbfstool/partitioned_file.o
+    HOSTCC     cbfstool/platform_fixups.o
+    HOSTCC     cbfstool/cbfs_private.o
+    HOSTCC     cbfstool/fsp_relocate.o
+    HOSTCC     cbfstool/linux_trampoline.o
+    HOSTCC     cbfstool/cbfs-payload-linux.o
+    HOSTCC     cbfstool/compress.o
+    HOSTCC     cbfstool/lz4.o
+    HOSTCC     cbfstool/lz4hc.o
+    HOSTCC     cbfstool/lz4frame.o
+    HOSTCC     cbfstool/xxhash.o
+    HOSTCC     cbfstool/lz4_wrapper.o
+    HOSTCC     cbfstool/lzma.o
+    HOSTCC     cbfstool/LzFind.o
+    HOSTCC     cbfstool/LzmaDec.o
+    HOSTCC     cbfstool/LzmaEnc.o
+    MAKE       /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/vboot_lib/libvboot_host.a
+vboot SHA256 built with tight loops (slower, smaller code size)
+    CC            cgpt/cgpt_add.o
+    CC            cgpt/cgpt_boot.o
+    CC            cgpt/cgpt_common.o
+    CC            cgpt/cgpt_create.o
+    CC            cgpt/cgpt_edit.o
+    CC            cgpt/cgpt_find.o
+    CC            cgpt/cgpt_prioritize.o
+    CC            cgpt/cgpt_show.o
+    CC            firmware/2lib/2common.o
+    CC            firmware/2lib/2context.o
+    CC            firmware/2lib/2crc8.o
+    CC            firmware/2lib/2crypto.o
+    CC            firmware/2lib/2hmac.o
+    CC            firmware/2lib/2kernel.o
+    CC            firmware/2lib/2nvstorage.o
+    CC            firmware/2lib/2recovery_reasons.o
+    CC            firmware/2lib/2rsa.o
+    CC            firmware/2lib/2sha1.o
+    CC            firmware/2lib/2sha256.o
+    CC            firmware/2lib/2sha512.o
+    CC            firmware/2lib/2sha_utility.o
+    CC            firmware/2lib/2struct.o
+    CC            firmware/2lib/2stub.o
+    CC            firmware/2lib/2stub_hwcrypto.o
+    CC            firmware/lib/cgptlib/cgptlib_internal.o
+    CC            firmware/lib/cgptlib/crc32.o
+    CC            firmware/lib/gpt_misc.o
+    CC            firmware/stub/tpm_lite_stub.o
+    CC            firmware/stub/vboot_api_stub.o
+    CC            firmware/stub/vboot_api_stub_disk.o
+    CC            futility/dump_kernel_config_lib.o
+    CC            host/arch/x86_64/lib/crossystem_arch.o
+    CC            host/lib/chromeos_config.o
+    CC            host/lib/crossystem.o
+    CC            host/lib/crypto.o
+    CC            host/lib/extract_vmlinuz.o
+    CC            host/lib/flashrom.o
+    CC            host/lib/fmap.o
+    CC            host/lib/host_misc.o
+    CC            host/lib/subprocess.o
+    CC            host/lib21/host_misc.o
+    CC            firmware/lib/tpm_lite/tlcl.o
+    RM            libvboot_host.a
+    AR            libvboot_host.a
+    HOSTCC     cbfstool/cbfstool (link)
+Using built-in specs.
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none:hsa
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 9.3.0-17ubuntu1~20.04' --with-bugurl=file:///usr/share/doc/gcc-9/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,gm2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-9 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-9-HskZEa/gcc-9-9.3.0/debian/tmp-nvptx/usr,hsa --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/9/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'build/util/cbfstool/cbfstool' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/9/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/9/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper -plugin-opt=-fresolution=/tmp/ccWVHae8.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o build/util/cbfstool/cbfstool /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/9/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/9 -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/9/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/9/../../.. build/util/cbfstool/cbfstool.o build/util/cbfstool/common.o build/util/cbfstool/cbfs_image.o build/util/cbfstool/cbfs-mkstage.o build/util/cbfstool/cbfs-mkpayload.o build/util/cbfstool/elfheaders.o build/util/cbfstool/rmodule.o build/util/cbfstool/xdr.o build/util/cbfstool/partitioned_file.o build/util/cbfstool/platform_fixups.o build/util/cbfstool/cbfs_private.o build/util/cbfstool/fsp_relocate.o build/util/cbfstool/fmap.o build/util/cbfstool/kv_pair.o build/util/cbfstool/valstr.o build/util/cbfstool/linux_trampoline.o build/util/cbfstool/cbfs-payload-linux.o build/util/cbfstool/compress.o build/util/cbfstool/lz4.o build/util/cbfstool/lz4hc.o build/util/cbfstool/lz4frame.o build/util/cbfstool/xxhash.o build/util/cbfstool/lz4_wrapper.o build/util/cbfstool/lzma.o build/util/cbfstool/LzFind.o build/util/cbfstool/LzmaDec.o build/util/cbfstool/LzmaEnc.o /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/build/util/vboot_lib/libvboot_host.a -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/9/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'build/util/cbfstool/cbfstool' '-mtune=generic' '-march=x86-64'
+Created CBFS (capacity = 982500 bytes)
+    CBFS       fallback/romstage
+    CBFS       cpu_microcode_blob.bin
+    CBFS       fallback/ramstage
+    CBFS       config
+    CBFS       revision
+    CBFS       build_info
+    CBFS       bootsplash.jpg
+    CBFS       fallback/dsdt.aml
+    CBFS       cmos.default
+    CBFS       vbt.bin
+    CBFS       cmos_layout.bin
+    CBFS       pci8086,0126.rom
+    CBFS       fallback/postcar
+    CBFS       img/coreinfo
+    CBFS       img/nvramcui
+    CBFS       fallback/payload
+    CBFS       payload_config
+    CBFS       payload_revision
+    CBFS       img/tint
+    CBFS       img/memtest
+    HOSTCC     cbfstool/ifittool.o
+    HOSTCC     cbfstool/fit.o
+    HOSTCC     cbfstool/ifittool (link)
+    SeaBIOS    Wait up to 3000 ms for PS/2 keyboard controller initialization
+    SeaBIOS    Thread optionroms
+   IFDTOOL
+    DD         Adding Intel Firmware Descriptor
+    IFDTOOL    me.bin -> coreboot.pre
+File build/coreboot.pre is 8388608 bytes
+File build/me.bin is 5230592 bytes
+Adding build/me.bin as the Intel ME section of build/coreboot.pre
+Writing new image to build/coreboot.pre
+    IFDTOOL    gbe.bin -> coreboot.pre
+File build/coreboot.pre is 8388608 bytes
+File /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/lenovo/x220/gbe.bin is 8192 bytes
+Adding /home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/lenovo/x220/gbe.bin as the GbE section of build/coreboot.pre
+Writing new image to build/coreboot.pre
+    IFDTOOL    Unlocking Management Engine
+File build/coreboot.pre is 8388608 bytes
+Writing new image to build/coreboot.pre
+    CBFS       coreboot.rom
+    CBFSLAYOUT  coreboot.rom
+
+This image contains the following sections that can be manipulated with this tool:
+
+'RW_MRC_CACHE' (size 65536, offset 7340032)
+'COREBOOT' (CBFS, size 982528, offset 7406080)
+
+It is possible to perform either the write action or the CBFS add/remove actions on every section listed above.
+To see the image's read-only sections as well, rerun with the -w option.
+    CBFSPRINT  coreboot.rom
+
+FMAP REGION: COREBOOT
+Name                           Offset     Type           Size   Comp
+cbfs master header             0x0        cbfs header        32 none
+fallback/romstage              0x80       stage           77240 none
+cpu_microcode_blob.bin         0x12ec0    microcode       26624 none
+fallback/ramstage              0x19700    stage          103240 LZMA (223052 decompressed)
+config                         0x32ac0    raw              1611 none
+revision                       0x33140    raw               700 none
+build_info                     0x33440    raw                85 none
+bootsplash.jpg                 0x334c0    bootsplash      57042 none
+fallback/dsdt.aml              0x413c0    raw             14425 none
+cmos.default                   0x44c80    cmos_default      256 none
+vbt.bin                        0x44dc0    raw              1400 LZMA (3985 decompressed)
+cmos_layout.bin                0x45380    cmos_layout      1976 none
+pci8086,0126.rom               0x45b80    optionrom       65536 none
+fallback/postcar               0x55bc0    stage           20312 none
+img/coreinfo                   0x5ab80    simple elf      46337 none
+img/nvramcui                   0x660c0    simple elf      57651 none
+fallback/payload               0x74240    simple elf      71798 none
+payload_config                 0x85b00    raw              1639 none
+payload_revision               0x861c0    raw               237 none
+img/tint                       0x86300    simple elf      42125 none
+img/memtest                    0x907c0    simple elf      47597 none
+etc/ps2-keyboard-spinup        0x9c200    raw                 8 none
+etc/threads                    0x9c240    raw                 8 none
+(empty)                        0x9c280    null           324516 none
+bootblock                      0xeb640    bootblock       18304 none
+    HOSTCC     cbfstool/ifwitool.o
+    HOSTCC     cbfstool/ifwitool (link)
+    HOSTCC     cbfstool/cse_fpt.o
+    HOSTCC     cbfstool/cse_helpers.o
+    HOSTCC     cbfstool/fpt_hdr_20.o
+    HOSTCC     cbfstool/fpt_hdr_21.o
+    HOSTCC     cbfstool/cse_fpt (link)
+    HOSTCC     cbfstool/cse_serger.o
+    HOSTCC     cbfstool/bpdt_1_6.o
+    HOSTCC     cbfstool/bpdt_1_7.o
+    HOSTCC     cbfstool/subpart_hdr_1.o
+    HOSTCC     cbfstool/subpart_hdr_2.o
+    HOSTCC     cbfstool/subpart_entry_1.o
+    HOSTCC     cbfstool/cse_serger (link)
+
+Built lenovo/x220 (ThinkPad X220)
+
+Build complete!
+Copying coreboot.rom file to /home/nyancat/Code/coreboot_thinkpad_x220
+
+
+Now you are ready to flash coreboot!
+Try running: sudo flashrom -p ch341a_spi -c 'W25Q128.V'
+You should see that the programmer and eeprom chip are detected by flashrom
+If not, then you need to fix your clip
+
+When you are ready, flash the coreboot rom by running:
+sudo flashrom -p ch341a_spi -c 'W25Q128.V' -w /home/nyancat/Code/coreboot_thinkpad_x220/coreboot.rom
+
+nyancat@poptart:~/Code/coreboot_thinkpad_x220
+$
