@@ -14,7 +14,6 @@ General
   [*] Compress ramstage with LZMA
   [*] Include coreboot .config file into the ROM image
   [*] Allow use of binary-only repository
-      Stage Cache for ACPI S3 resume (TSEG) --->
   [*] Add a bootsplash image
       (/home/nyancat/Code/coreboot_thinkpad_x220/bootsplash.jpg) Bootsplash path and filename
 
@@ -22,9 +21,7 @@ Mainboard
   *** Important: Run 'make distclean' before switching boards ***
   Mainboard vendor (Lenovo) --->
   Mainboard model (ThinkPad X220) --->
-  (LENOVO) Mainboard vendor name
-  ROM chip size (16384 KB (16 MB)) --->
-  System Power State after Failure (S5 Soft Off) --->
+  ROM chip size (8192 KB (8 MB)) --->
   (0x100000) Size of CBFS filesystem in ROM
 
 Chipset
@@ -32,7 +29,6 @@ Chipset
       *** CPU ***
   [*] Enable VMX for virtualization
   [*] Set IA32_FEATURE_CONTROL lock bit
-      APIC operation mode (Set XAPIC mode) --->
       Include CPU microcode in CBFS (Generate from tree) --->
 
       *** Northbridge ***
@@ -49,7 +45,6 @@ Chipset
       (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/descriptor.bin) Path and filename
   [*] Add Intel ME/TXE firmware
       (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/me.bin) Path to management engine firmware
-  [*] Allows HOST/CPU read access to ME region
   [*] Add gigabit ethernet firmware
       (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/gbe.bin) Path to gigabit ethernet
 
@@ -67,6 +62,7 @@ Devices
   -*- Enable PCIe ASPM
   [*] Enable PCIe Clock Power Management
   [*] Enable PCIe ASPM L1 SubState
+  [*] Enable PCIe Hotplug Support
   [*] Add a VGA BIOS image
       (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/vgabios.bin) VGA BIOS path and filename
       (8086,0126) VGA device PCI IDs
@@ -108,8 +104,9 @@ Debugging
 #### Note:
 - Verify the Bootsplash image path and filename are correct
 - Verify the VGA BIOS path and filename are correct
-- If you replaced the stock ROM chip, make sure the ROM chip size is correct
-    - example: I desoldered the stock ROM chip (8192 KB (8 MB)) and replaced it with a winbond W25Q128.V (16384 KB (16 MB))
+- If you replaced the stock ROM chip, make sure you run truncate on the coreboot.rom file before flashing it (truncate will pad with zeros)
+    - example: I desoldered the stock ROM chip (8192 KB (8 MB)) and replaced it with a winbond W25Q128.V (16384 KB (16 MB)) \
+    `truncate -s 16777216 coreboot.rom`
 
 ---
 
@@ -121,12 +118,3 @@ Debugging
 - Tyler Cipriani's [blog post](https://tylercipriani.com/blog/2016/11/13/coreboot-on-the-thinkpad-x220-with-a-raspberry-pi/)
 - ifrit05's [coreboot-bootsplashes repo](https://github.com/ifrit05/coreboot-bootsplashes)
 - notthebeee's [blog post](https://notthebe.ee/revertcoreboot.html)
-
-
-
-
-
-
-
-
-
