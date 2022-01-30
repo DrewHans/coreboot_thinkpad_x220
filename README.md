@@ -5,7 +5,7 @@ A place to store the coreboot configuration for my Thinkpad x220 laptop
 
 # Coreboot 4.15 Configuration for the Thinkpad x220
 
-When you run `make nconfig` you should use these options:
+When you run `make nconfig` you should make sure the options below are selected (but don't deselect coreboot defaults).
 
 ```
 General
