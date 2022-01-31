@@ -42,11 +42,11 @@ Chipset
 
       *** Intel Firmware ***
   [*] Add Intel descriptor.bin file
-      (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/descriptor.bin) Path and filename
+      (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/$(MAINBOARDDIR)/descriptor.bin) Path and filename
   [*] Add Intel ME/TXE firmware
-      (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/me.bin) Path to management engine firmware
+      (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/$(MAINBOARDDIR)/me.bin) Path to management engine firmware
   [*] Add gigabit ethernet firmware
-      (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/gbe.bin) Path to gigabit ethernet
+      (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/$(MAINBOARDDIR)/gbe.bin) Path to gigabit ethernet
 
 Devices
       Graphics initialization (Run VGA Option ROMs) --->
@@ -64,7 +64,7 @@ Devices
   [*] Enable PCIe ASPM L1 SubState
   [*] Enable PCIe Hotplug Support
   [*] Add a VGA BIOS image
-      (/home/nyancat/Code/coreboot_thinkpad_x220/blobs/vgabios.bin) VGA BIOS path and filename
+      (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/$(MAINBOARDDIR)/vgabios.bin) VGA BIOS path and filename
       (8086,0126) VGA device PCI IDs
   [*] Add a Video Bios Table (VBT) binary to CBFS
       (src/mainboard/$(MAINBOARDDIR)/variants/x220/data.vbt) VBT binary path and filename
@@ -101,7 +101,7 @@ Debugging
 
 ```
 
-#### Note:
+#### Notes:
 - Verify the Bootsplash image path and filename are correct
 - Verify the VGA BIOS path and filename are correct
 - If you replaced the stock ROM chip, make sure you run truncate on the coreboot.rom file before flashing it (truncate will pad with zeros)
