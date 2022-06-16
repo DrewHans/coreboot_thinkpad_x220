@@ -3,9 +3,9 @@ A place to store the coreboot configuration for my Thinkpad x220 laptop
 
 ---
 
-# Coreboot 4.15 Configuration for the Thinkpad x220
+# Coreboot 4.17 Configuration for the Thinkpad x220
 
-When you run `make nconfig` you should make sure the options below are selected (but don't deselect coreboot defaults).
+When you run `make nconfig` you should make sure the options below are selected (but don't deselect any coreboot defaults, except for secondary payloads).
 
 ```
 General
@@ -84,17 +84,16 @@ System Tables
 
 Payload
       Add a payload (SeaBIOS) --->
-      SeaBIOS version (master) --->
+      SeaBIOS version (1.16.0) --->
       (3000) PS/2 keyboard controller initialization timeout (milliseconds)
   [*] Hardware init during option ROM execution
       Payload compression algorithm (Use LZMA compression for payloads) --->
   [*] Use LZMA compression for secondary payloads
       Secondary Payloads --->
-        [*] Load coreinfo as a secondary payload
-        [*] Load Memtest86+ as a secondary payloada
-        [*] Load nvramcui as a secondary payload
-        [*] Load tint as a secondary payload
-            Memtest86+ version (Stable) --->
+        [ ] Load coreinfo as a secondary payload
+        [ ] Load Memtest86+ as a secondary payloada
+        [ ] Load nvramcui as a secondary payload
+        [ ] Load tint as a secondary payload
 
 Debugging
   -*- Platform can support the dediprog EM100 SPI emulator
@@ -107,7 +106,11 @@ Debugging
 - If you replaced the stock ROM chip, make sure you run truncate on the coreboot.rom file before flashing it (truncate will pad with zeros)
     - example: I desoldered the stock ROM chip (8192 KB (8 MB)) and replaced it with a winbond W25Q128.V (16384 KB (16 MB)) \
     `truncate -s 16777216 coreboot.rom`
-
+- If you add a custom bootsplash jpg image, make sure you export it with the following settings: 
+    - uncheck "Save EXIF data", "Save XMP data", "Save IPTC data", "Save thumbnail", "Save color profile"
+    - in advanced options, uncheck "Progressive"
+    - in advanced options, set "Subsampling" to "4:2:0 (chroma quartered)"
+    - lastly, adjust quality (compression) as needed (max size is the free space available on the flash chip)
 ---
 
 # Online references:
