@@ -14,9 +14,12 @@ echo "Now you are ready to flash coreboot!"
 programmer="ch341a_spi"
 eeprom_chip="W25Q128.V"
 
-echo "Try running: sudo flashrom -p $programmer -c '$eeprom_chip'"
+echo "Try running:"
+echo "sudo flashrom -p $programmer -c '$eeprom_chip'"
+echo ""
+
 echo "You should see that the programmer and eeprom chip are detected by flashrom"
-echo "If not, then you need to fix your clip"
+echo "If not, then you probably need to fix your clip"
 echo ""
 
 echo "When you are ready, flash the coreboot rom by running:"
