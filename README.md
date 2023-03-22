@@ -45,6 +45,7 @@ Chipset
       (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/$(MAINBOARDDIR)/descriptor.bin) Path and filename
   [*] Add Intel ME/TXE firmware
       (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/$(MAINBOARDDIR)/me.bin) Path to management engine firmware
+  [*] Allows HOST/CPU read access to ME region
   [*] Add gigabit ethernet firmware
       (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/$(MAINBOARDDIR)/gbe.bin) Path to gigabit ethernet
 
