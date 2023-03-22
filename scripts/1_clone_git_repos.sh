@@ -5,7 +5,7 @@ work_dir=$(pwd)
 me_cleaner_repo="https://github.com/corna/me_cleaner"
 coreboot_repo="https://review.coreboot.org/coreboot"
 
-coreboot_version_tag="4.17"  # set the latest numbered version here
+coreboot_version_tag="4.19"  # set the latest numbered version here
 
 # check prerequisite programs installed
 command -v git >/dev/null 2>&1 || {
