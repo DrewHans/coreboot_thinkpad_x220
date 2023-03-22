@@ -26,5 +26,8 @@ $work_dir/scripts/0_install_prerequisites.sh \
 && $work_dir/scripts/5_download_vgabios.sh \
 && $work_dir/scripts/6_move_3rdparty_blobs.sh \
 && $work_dir/scripts/7_configure_coreboot.sh \
-&& $work_dir/scripts/8_build_coreboot.sh \
-&& $work_dir/scripts/9_flash_coreboot_rom.sh
+&& $work_dir/scripts/8_build_coreboot.sh
+
+echo "Finished $0"
+
+# next step is to flash internally or externally
