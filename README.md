@@ -3,9 +3,13 @@ A place to store the coreboot configuration for my Thinkpad x220 laptop
 
 ---
 
-# Coreboot 4.17 Configuration for the Thinkpad x220
+# Coreboot 4.19 Configuration for the Thinkpad x220
 
-When you run `make nconfig` you should make sure the options below are selected (but don't deselect any coreboot defaults, except for secondary payloads).
+When you run `make nconfig` you MUST make sure the options below are selected!
+Don't deselect any coreboot defaults (these can vary version to version).
+If you have the free space available, you can select secondary payloads (like coreinfo).
+
+WARNING: Be sure to select "ROM chip size (8192 KB (8 MB))" under Mainboard (even if you replaced the stock 8 MB chip with a different sized one; if you soldered a 16 MB chip on like I did, then you should run scripts/expand_coreboot_rom.sh after building the coreboot.rom). Not sure why but whenever I select a different ROM chip size option, the resulting ROM does not work on my laptop. Don't forget this step or else you will waste hours of your life trying to figure out what went wrong. You've been warned.
 
 ```
 General
@@ -42,12 +46,12 @@ Chipset
 
       *** Intel Firmware ***
   [*] Add Intel descriptor.bin file
-      (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/$(MAINBOARDDIR)/descriptor.bin) Path and filename
+      (3rdparty/blobs/mainboard/$(MAINBOARDDIR)/descriptor.bin) Path and filename
   [*] Add Intel ME/TXE firmware
-      (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/$(MAINBOARDDIR)/me.bin) Path to management engine firmware
+      (3rdparty/blobs/mainboard/$(MAINBOARDDIR)/me.bin) Path to management engine firmware
   [*] Allows HOST/CPU read access to ME region
   [*] Add gigabit ethernet firmware
-      (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/$(MAINBOARDDIR)/gbe.bin) Path to gigabit ethernet
+      (3rdparty/blobs/mainboard/$(MAINBOARDDIR)/gbe.bin) Path to gigabit ethernet
 
 Devices
       Graphics initialization (Run VGA Option ROMs) --->
@@ -65,7 +69,7 @@ Devices
   [*] Enable PCIe ASPM L1 SubState
   [*] Enable PCIe Hotplug Support
   [*] Add a VGA BIOS image
-      (/home/nyancat/Code/coreboot_thinkpad_x220/coreboot/3rdparty/blobs/mainboard/$(MAINBOARDDIR)/vgabios.bin) VGA BIOS path and filename
+      (3rdparty/blobs/mainboard/$(MAINBOARDDIR)/vgabios.bin) VGA BIOS path and filename
       (8086,0126) VGA device PCI IDs
   [*] Add a Video Bios Table (VBT) binary to CBFS
       (src/mainboard/$(MAINBOARDDIR)/variants/x220/data.vbt) VBT binary path and filename
@@ -97,7 +101,6 @@ Payload
         [ ] Load tint as a secondary payload
 
 Debugging
-  -*- Platform can support the dediprog EM100 SPI emulator
 
 ```
 
