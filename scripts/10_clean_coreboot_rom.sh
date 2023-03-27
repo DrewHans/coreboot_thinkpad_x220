@@ -4,7 +4,7 @@
 work_dir=$(pwd)
 
 original_coreboot_rom_file="coreboot.rom"
-cleaned_coreboot_rom_file="cleaned_coreboot.rom"
+cleaned_coreboot_rom_file="cleaned-coreboot.rom"
 
 
 if [ ! -f "$work_dir/$original_coreboot_rom_file" ]; then
