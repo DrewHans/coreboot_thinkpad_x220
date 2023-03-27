@@ -5,6 +5,8 @@ work_dir=$(pwd)
 
 me_cleaner_dir="/home/nyancat/Code/coreboot_thinkpad_x220/me_cleaner"
 
+echo "Starting $0"
+
 if [[ $# -ne 1 ]]
 then
 	 echo "Error: you must provide the name of a rom file"
@@ -41,6 +43,13 @@ then
 	# -M => extract-me; extract the ME firmware from a full dump; when used with `--truncate` save a truncated ME/TXE image.
 	# -O => output; save the modified image in a separate file, instead of modifying the original file.
 
+	echo ""
+	echo "Removing ifd_shrinked.bin"
+	rm "$work_dir/ifd_shrinked.bin"
+	echo "Removing me_shrinked.bin"
+	rm "$work_dir/me_shrinked.bin"
+	echo ""
+
 else
 	echo "Detected $cleaned_rom_file at $work_dir/$cleaned_rom_file"
 	echo "Checking whether the provided rom file has a valid structure and signature..."
@@ -52,4 +61,5 @@ else
 	echo "Finished checking rom file"
 fi
 
+echo "Finished $0"
 echo ""
