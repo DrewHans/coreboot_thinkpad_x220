@@ -3,6 +3,8 @@
 
 echo "Starting $0"
 
+work_dir=$(pwd)
+
 # chain script calls to ensure aborts stop the run
 $work_dir/scripts/00_check_file_dependencies.sh && \
 $work_dir/scripts/01_apt_install_required_tools.sh && \
