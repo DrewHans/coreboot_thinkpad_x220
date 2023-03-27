@@ -4,8 +4,8 @@
 work_dir=$(pwd)
 
 if [ ! -f "$work_dir/coreboot/.config" ]; then
-    echo "$work_dir/coreboot/.config not found; aborting $0"
-    exit 1
+	echo "$work_dir/coreboot/.config not found; aborting $0"
+	exit 1
 fi
 
 cd $work_dir/coreboot/
@@ -17,22 +17,22 @@ echo ""
 
 echo "Running make crossgcc-i386 CPUS=$num_of_cpus_to_use"
 make crossgcc-i386 CPUS=$num_of_cpus_to_use || {
-    echo "Error detected; aborting $0"
-    exit 1
+	echo "Error detected; aborting $0"
+	exit 1
 }
 echo ""
 
 echo "Running make iasl"
 make iasl || {
-    echo "Error detected; aborting $0"
-    exit 1
+	echo "Error detected; aborting $0"
+	exit 1
 }
 echo ""
 
 echo "Making coreboot rom"
 make || {
-    echo "Error detected; aborting $0"
-    exit 1
+	echo "Error detected; aborting $0"
+	exit 1
 }
 echo ""
 

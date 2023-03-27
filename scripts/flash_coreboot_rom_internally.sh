@@ -3,10 +3,12 @@
 
 work_dir=$(pwd)
 
-if [ ! -f "$work_dir/coreboot.rom" ]; then
-    echo "coreboot.rom not found; something went horribly wrong"
-    echo "Aborting $0"
-    exit 1
+cleaned_coreboot_rom_file="cleaned_coreboot.rom"
+
+if [ ! -f "$work_dir/$cleaned_coreboot_rom_file" ]; then
+	echo "$cleaned_coreboot_rom_file not found; something went horribly wrong"
+	echo "Aborting $0"
+	exit 1
 fi
 
 echo "Now you are ready to flash coreboot!"
@@ -15,7 +17,9 @@ echo "However, we will have to force flashrom to do it (and to ONLY flash the BI
 echo ""
 
 programmer="internal:laptop=force_I_want_a_brick"
-eeprom_chip="W25Q128.V"
+eeprom_16mb_chip="W25Q128.V"
+eeprom_8mb_chip="MX25L6406E/MX25L6408E"
+eeprom_chip=$eeprom_16mb_chip
 
 echo "Try running this command on the device:"
 echo "sudo flashrom -p $programmer -c '$eeprom_chip'"
@@ -26,7 +30,7 @@ echo "If not, then there may be something wrong with the device"
 echo ""
 
 echo "When you are ready, flash the coreboot rom by running this command on the device:"
-echo "sudo flashrom -p $programmer -c '$eeprom_chip' -w $work_dir/coreboot.rom --ifd --image bios --no-verify"
+echo "sudo flashrom -p $programmer -c '$eeprom_chip' -w $work_dir/$cleaned_coreboot_rom_file --ifd --image bios --no-verify"
 # note to self, don't forget that passing -r instead of -w will read the chip
 
 echo ""

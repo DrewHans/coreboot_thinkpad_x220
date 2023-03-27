@@ -3,8 +3,8 @@
 
 # check prerequisite program installed
 command -v flashrom >/dev/null 2>&1 || {
-    echo "flashrom not found; aborting $0"
-    exit 1
+	echo "flashrom not found; aborting $0"
+	exit 1
 }
 
 echo "Starting script"

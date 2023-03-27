@@ -9,7 +9,7 @@ cd $work_dir/coreboot/util/ifdtool
 
 make
 
-echo "Installing ifdtool"
+echo "Installing coreboot's ifdtool"
 sudo make install
 
 cd $work_dir  # return to start directory
