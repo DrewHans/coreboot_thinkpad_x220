@@ -12,8 +12,8 @@ if [ ! -f "$work_dir/$cleaned_coreboot_rom_file" ]; then
 fi
 
 echo "Now you are ready to flash coreboot!"
-echo "If the device is already running coreboot, any subsequent flashes can be done internally"
-echo "However, we will have to force flashrom to do it (and to ONLY flash the BIOS region)"
+echo "If the device is already running coreboot, any subsequent flashes to BIOS region can be done internally"
+echo "However, we will have to force flashrom to do it (and to ONLY flash the BIOS region; other regions are not flashable)"
 echo ""
 
 programmer="internal:laptop=force_I_want_a_brick"
@@ -30,7 +30,6 @@ echo "If not, then there may be something wrong with the device"
 echo ""
 
 echo "When you are ready, flash the coreboot rom by running this command on the device:"
-echo "sudo flashrom -p $programmer -c '$eeprom_chip' -w $work_dir/$cleaned_coreboot_rom_file --ifd --image bios --no-verify"
+echo "sudo flashrom -p $programmer -c '$eeprom_chip' -w $work_dir/$cleaned_coreboot_rom_file --ifd --image bios"
 # note to self, don't forget that passing -r instead of -w will read the chip
-
 echo ""
